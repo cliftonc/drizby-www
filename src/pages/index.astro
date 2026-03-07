@@ -23,8 +23,14 @@ const ogImage = `${url}/images/drizby_2.png`;
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="512x512" href="/logo.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0f1117" />
 
     <!-- Primary Meta -->
     <title>{title}</title>
@@ -32,6 +38,7 @@ const ogImage = `${url}/images/drizby_2.png`;
     <meta name="description" content={description} />
     <meta name="author" content="Clifton Cunningham" />
     <meta name="keywords" content="drizby, drizzle-cube, business intelligence, BI, analytics, semantic layer, drizzle orm, dashboards, AI notebooks, open source" />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href={url} />
 
     <!-- Open Graph / Facebook -->
