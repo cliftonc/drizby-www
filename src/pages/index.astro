@@ -14,8 +14,8 @@ const features = [
   { title: 'Analysis Builder', desc: 'Visual, no-code query builder. Select measures, dimensions, and filters with real-time results.' },
 ];
 
-const title = 'Drizby - Open-source BI powered by drizzle-cube';
-const description = 'Open-source BI platform powered by drizzle-cube. Self-service analytics, AI agentic notebooks, and a full semantic layer — in one deployable app.';
+const title = 'Drizby - Open-source BI powered by drizzle-cube | Drizby Cloud';
+const description = 'Open-source BI platform powered by drizzle-cube. Self-service analytics, AI agentic notebooks, and a full semantic layer — self-host or deploy instantly on Drizby Cloud.';
 const url = 'https://drizby.com';
 const ogImage = `${url}/images/drizby_2.png`;
 ---
@@ -37,7 +37,7 @@ const ogImage = `${url}/images/drizby_2.png`;
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content="Clifton Cunningham" />
-    <meta name="keywords" content="drizby, drizzle-cube, business intelligence, BI, analytics, semantic layer, drizzle orm, dashboards, AI notebooks, open source" />
+    <meta name="keywords" content="drizby, drizby cloud, drizzle-cube, business intelligence, BI, analytics, semantic layer, drizzle orm, dashboards, AI notebooks, open source, managed hosting, postgres analytics" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={url} />
 
@@ -73,7 +73,8 @@ const ogImage = `${url}/images/drizby_2.png`;
       "license": "https://opensource.org/licenses/MIT",
       "image": ogImage,
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "sourceOrganization": { "@type": "Person", "name": "Clifton Cunningham", "url": "https://github.com/cliftonc" }
+      "sourceOrganization": { "@type": "Person", "name": "Clifton Cunningham", "url": "https://github.com/cliftonc" },
+      "potentialAction": { "@type": "ViewAction", "name": "Try Drizby Cloud", "target": "https://cloud.drizby.com/register" }
     })} />
   </head>
   <body>
@@ -84,12 +85,25 @@ const ogImage = `${url}/images/drizby_2.png`;
           <h1>Drizby</h1>
         </div>
         <p class="tagline">Open-source BI platform powered by <a href="https://github.com/cliftonc/drizzle-cube" target="_blank" rel="noopener">drizzle-cube</a></p>
-        <p class="subtitle">Self-service analytics, AI agentic notebooks, and a full semantic layer &mdash; in one deployable app.</p>
+        <p class="subtitle">Self-service analytics, AI agentic notebooks, and a full semantic layer &mdash; self-host with Docker or deploy instantly on Drizby Cloud.</p>
         <nav>
           <a class="btn" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener"><svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Drizby</a>
           <a class="btn" href="https://github.com/cliftonc/drizzle-cube" target="_blank" rel="noopener"><svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> drizzle-cube</a>
-          <a class="btn btn-primary" href="https://try.drizzle-cube.dev" target="_blank" rel="noopener">Try Drizzle-Cube</a>
+          <a class="btn btn-secondary" href="https://try.drizzle-cube.dev" target="_blank" rel="noopener">Try Drizzle-Cube</a>
         </nav>
+        <div class="cloud-banner">
+          <div class="cloud-link">
+            <img src="/images/cloud-logo.png" alt="Drizby Cloud" class="cloud-icon" />
+            <span class="cloud-text">
+              <strong>Drizby Cloud</strong> <span class="cloud-badge">New</span><br/>
+              Skip the setup &mdash; deploy a fully managed Drizby instance in seconds. Connect your Postgres database and start exploring your data with AI-powered analytics, dashboards, and notebooks. Free during initial launch.
+            </span>
+            <span class="cloud-actions">
+              <a href="https://cloud.drizby.com/register" target="_blank" rel="noopener" class="cloud-btn cloud-btn-primary">Register</a>
+              <a href="https://cloud.drizby.com/login" target="_blank" rel="noopener" class="cloud-btn">Login</a>
+            </span>
+          </div>
+        </div>
       </div>
 
       <!-- Decorative flowing lines under buttons, full width -->
@@ -250,7 +264,7 @@ const ogImage = `${url}/images/drizby_2.png`;
     </main>
 
     <footer>
-      <p>MIT License &middot; <a href="https://github.com/cliftonc/drizby">github.com/cliftonc/drizby</a></p>
+      <p>MIT License &middot; <a href="https://github.com/cliftonc/drizby">GitHub</a> &middot; <a href="https://cloud.drizby.com">Drizby Cloud</a></p>
     </footer>
   </body>
 </html>
@@ -279,14 +293,14 @@ const ogImage = `${url}/images/drizby_2.png`;
 
   /* Header */
   header {
-    padding: 3rem 1.5rem 0;
+    padding: 5rem 1.5rem 0;
     text-align: center;
     background: var(--bg);
     overflow: visible;
   }
 
   .header-inner {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
@@ -294,39 +308,45 @@ const ogImage = `${url}/images/drizby_2.png`;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .logo {
-    height: 2.5rem;
+    height: 4rem;
     width: auto;
-    filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.3));
+    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.4));
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 4rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .tagline {
-    margin-top: 0.5rem;
-    font-size: 1.15rem;
+    margin-top: 1rem;
+    font-size: 1.4rem;
     color: var(--muted);
+    line-height: 1.4;
   }
 
   .subtitle {
-    margin-top: 0.75rem;
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 540px;
+    margin-top: 1rem;
+    font-size: 1.15rem;
+    color: var(--text);
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.5;
+    line-height: 1.6;
+    opacity: 0.85;
   }
 
   nav {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     display: flex;
     gap: 0.75rem;
     justify-content: center;
@@ -335,9 +355,9 @@ const ogImage = `${url}/images/drizby_2.png`;
 
   .btn {
     display: inline-block;
-    padding: 0.55rem 1.25rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 500;
     border: 1px solid var(--border);
     color: var(--text);
@@ -386,6 +406,100 @@ const ogImage = `${url}/images/drizby_2.png`;
     max-width: 960px;
     margin: 0 auto;
     padding: 0 1.5rem 4rem;
+  }
+
+  /* Cloud banner */
+  .cloud-banner {
+    margin-top: 2rem;
+  }
+  .cloud-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .cloud-link:hover {
+    border-color: #0891b2;
+    color: var(--text);
+  }
+  .cloud-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+  .cloud-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: #0891b2;
+    color: #fff;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+  }
+  .cloud-text {
+    flex: 1;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-align: left;
+    color: var(--muted);
+  }
+  .cloud-text strong {
+    color: #22d3ee;
+    font-size: 0.95rem;
+  }
+  .cloud-actions {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .cloud-btn {
+    display: block;
+    text-align: center;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    color: #22d3ee;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+  .cloud-btn:hover {
+    background: rgba(8, 145, 178, 0.2);
+    border-color: #22d3ee;
+    color: #22d3ee;
+  }
+  .cloud-btn-primary {
+    background: #0891b2;
+    border-color: #0891b2;
+    color: #fff;
+  }
+  .cloud-btn-primary:hover {
+    background: #0e7490;
+    border-color: #0e7490;
+    color: #fff;
+  }
+
+  .btn-secondary {
+    color: var(--muted);
+    border-color: var(--border);
+  }
+  .btn-secondary:hover {
+    color: var(--text);
+    border-color: var(--accent);
   }
 
   /* Docker */
@@ -489,9 +603,12 @@ const ogImage = `${url}/images/drizby_2.png`;
   }
 
   @media (max-width: 600px) {
-    h1 { font-size: 1.75rem; }
-    .logo { height: 1.75rem; width: auto; }
-    header { padding: 2rem 1rem 1.5rem; }
+    h1 { font-size: 2.25rem; }
+    .logo { height: 2.5rem; width: auto; }
+    header { padding: 3rem 1rem 1.5rem; }
+    .cloud-link { flex-direction: column; text-align: center; padding: 1.25rem; }
+    .cloud-text { text-align: center; }
+    .cloud-actions { flex-direction: row; justify-content: center; }
     .docker { display: none; }
     .flow-connector { height: 5rem; }
     .flow-connector-sm { height: 3rem; }
