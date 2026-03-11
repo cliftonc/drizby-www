@@ -14,6 +14,51 @@ const features = [
   { title: 'Analysis Builder', desc: 'Visual, no-code query builder. Select measures, dimensions, and filters with real-time results.' },
 ];
 
+const databases = [
+  {
+    category: 'PostgreSQL',
+    color: '#336791',
+    providers: [
+      { name: 'PostgreSQL', logo: '/images/db-logos/postgresql.png', url: 'https://www.postgresql.org' },
+      { name: 'Neon', logo: '/images/db-logos/neon.png', url: 'https://neon.com' },
+      { name: 'Supabase', logo: '/images/db-logos/supabase.png', url: 'https://supabase.com' },
+      { name: 'PGlite', logo: '/images/db-logos/pglite.png', url: 'https://pglite.dev' },
+      { name: 'AWS Aurora', logo: '/images/db-logos/aws.png', url: 'https://aws.amazon.com/rds/aurora/' },
+    ],
+  },
+  {
+    category: 'MySQL',
+    color: '#00758f',
+    providers: [
+      { name: 'MySQL', logo: '/images/db-logos/mysql.png', url: 'https://www.mysql.com' },
+      { name: 'PlanetScale', logo: '/images/db-logos/planetscale.png', url: 'https://planetscale.com' },
+      { name: 'TiDB', logo: '/images/db-logos/tidb.png', url: 'https://www.pingcap.com' },
+    ],
+  },
+  {
+    category: 'SQLite',
+    color: '#003b57',
+    providers: [
+      { name: 'SQLite', logo: '/images/db-logos/sqlite.png', url: 'https://www.sqlite.org' },
+      { name: 'Turso', logo: '/images/db-logos/turso.png', url: 'https://turso.tech' },
+    ],
+  },
+  {
+    category: 'SingleStore',
+    color: '#aa00ff',
+    providers: [
+      { name: 'SingleStore', logo: '/images/db-logos/singlestore.png', url: 'https://www.singlestore.com' },
+    ],
+  },
+  {
+    category: 'DuckDB',
+    color: '#fff000',
+    providers: [
+      { name: 'DuckDB', logo: '/images/db-logos/duckdb.png', url: 'https://duckdb.org' },
+    ],
+  },
+];
+
 const title = 'Drizby - Open-source BI powered by drizzle-cube | Drizby Cloud';
 const description = 'Open-source BI platform powered by drizzle-cube. Self-service analytics, AI agentic notebooks, and a full semantic layer — self-host or deploy instantly on Drizby Cloud.';
 const url = 'https://drizby.com';
@@ -260,6 +305,44 @@ const ogImage = `${url}/images/drizby_2.png`;
             <p>{desc}</p>
           </div>
         ))}
+      </section>
+
+      <!-- Flow connector: features -> databases -->
+      <div class="flow-connector">
+        <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
+          <path d="M 300 0 C 300 75, 900 75, 900 150" stroke="url(#flowG1)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+          <circle r="8" fill="url(#pG1)">
+            <animateMotion dur="6s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" />
+            <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="6s" repeatCount="indefinite" />
+          </circle>
+          <circle r="4" fill="url(#pG2)">
+            <animateMotion dur="3.5s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" begin="2s" />
+            <animate attributeName="opacity" values="0;0.5;0.5;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="2s" />
+          </circle>
+        </svg>
+      </div>
+
+      <section class="databases">
+        <h2>Supported Databases</h2>
+        <p class="databases-subtitle">Connect to any database supported by Drizzle ORM</p>
+        <div class="db-grid">
+          {databases.map(({ category, color, providers }) => (
+            <div class="db-category">
+              <div class="db-category-header" style={`border-color: ${color}`}>
+                <span class="db-category-dot" style={`background: ${color}`} />
+                <h3>{category}</h3>
+              </div>
+              <div class="db-providers">
+                {providers.map(({ name, logo, url }) => (
+                  <a href={url} target="_blank" rel="noopener" class="db-provider">
+                    <img src={logo} alt={`${name} logo`} class="db-logo" loading="lazy" />
+                    <span class="db-name">{name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
 
@@ -593,6 +676,92 @@ const ogImage = `${url}/images/drizby_2.png`;
   .feature h3 { font-size: 1rem; margin-bottom: 0.4rem; }
   .feature p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
 
+  /* Databases */
+  .databases {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .databases h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .databases-subtitle {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .db-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .db-category {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .db-category:hover {
+    border-color: var(--accent);
+  }
+  .db-category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .db-category-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .db-category-header h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+  }
+  .db-providers {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .db-provider {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.15s;
+  }
+  .db-provider:hover {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--text);
+  }
+  .db-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .db-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
   /* Footer */
   footer {
     text-align: center;
@@ -612,5 +781,6 @@ const ogImage = `${url}/images/drizby_2.png`;
     .docker { display: none; }
     .flow-connector { height: 5rem; }
     .flow-connector-sm { height: 3rem; }
+    .db-grid { grid-template-columns: 1fr; }
   }
 </style>
