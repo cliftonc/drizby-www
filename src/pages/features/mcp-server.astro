@@ -26,6 +26,15 @@ const vscodeConfig = `{
   ogImage="https://www.drizby.com/images/claude_mcp.png"
   canonicalPath="/features/mcp-server"
 >
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.drizby.com" },
+      { "@type": "ListItem", "position": 2, "name": "Features" },
+      { "@type": "ListItem", "position": 3, "name": "MCP Server", "item": "https://www.drizby.com/features/mcp-server" }
+    ]
+  })} />
   <main class="feature-page">
     <a href="/" class="breadcrumb">&larr; Back to Home</a>
 

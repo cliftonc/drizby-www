@@ -8,6 +8,15 @@ import Layout from '../../layouts/Layout.astro';
   ogImage="https://www.drizby.com/images/drizby_5.png"
   canonicalPath="/features/semantic-layer"
 >
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.drizby.com" },
+      { "@type": "ListItem", "position": 2, "name": "Features" },
+      { "@type": "ListItem", "position": 3, "name": "Semantic Layer", "item": "https://www.drizby.com/features/semantic-layer" }
+    ]
+  })} />
   <main class="feature-page">
     <a href="/" class="breadcrumb">&larr; Back to Home</a>
 

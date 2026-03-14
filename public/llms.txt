@@ -1,0 +1,110 @@
+# Drizby
+
+> Drizby is an open-source AI analytics platform powered by drizzle-cube. It provides dashboards, agentic AI notebooks, a visual analysis builder, and a full semantic layer. Self-host free with Docker or use Drizby Cloud for managed hosting. Operated by Guidemode Limited.
+
+Drizby connects directly to your databases (PostgreSQL, MySQL, SQLite, SingleStore, DuckDB) and queries pass through in real time. It never copies, caches, or stores your data. The semantic layer is powered by drizzle-cube, which compiles Drizzle ORM schemas into analytics cubes with measures, dimensions, and security context.
+
+## Key Features
+
+- [Semantic Layer](https://www.drizby.com/features/semantic-layer): Code-first semantic layer powered by drizzle-cube. Generate schemas from your database, define metrics once, access them everywhere.
+- [Dashboards & Analysis Builder](https://www.drizby.com/features/dashboards): Drag-and-drop grid dashboards with 20+ chart types and a visual no-code analysis builder.
+- [Agentic AI Notebooks](https://www.drizby.com/features/agentic-notebooks): Multi-turn AI conversations about your data with mixed content blocks (markdown, charts, query results, KPI cards). Works with Anthropic Claude, OpenAI, or Google Gemini.
+- [MCP Server](https://www.drizby.com/features/mcp-server): Model Context Protocol server with OAuth 2.1 authentication. Expose your semantic layer to AI assistants like Claude, VS Code Copilot, and Cursor.
+- [Users & Groups](https://www.drizby.com/features/users-and-groups): Unlimited users with no per-seat pricing. Role-based access control and group-based visibility.
+
+## Supported Databases
+
+PostgreSQL (including Neon, Supabase, AWS Aurora, PGlite), MySQL (including PlanetScale, TiDB), SQLite (including Turso), SingleStore, and DuckDB — any database supported by Drizzle ORM.
+
+## Getting Started
+
+Self-host with a single Docker command:
+
+```
+docker run -p 3461:3461 -v drizby-data:/app/data ghcr.io/cliftonc/drizby:main
+```
+
+Or sign up for [Drizby Cloud](https://cloud.drizby.com/register) for managed hosting with usage-based pricing.
+
+## Pricing
+
+- **Self-Hosted:** Free forever, MIT licensed, unlimited users/dashboards/notebooks.
+- **Drizby Cloud:** Pay-as-you-go at £0.000347/min (£0.02/hr). 24 hours free. No per-seat fees. See [Pricing](https://www.drizby.com/pricing) for details.
+
+## Technical Details
+
+- **Tech stack:** Hono (TypeScript), React, Drizzle ORM, Recharts, TanStack Query, Monaco Editor
+- **Semantic layer:** drizzle-cube compiles Drizzle schemas into analytics cubes
+- **AI providers:** Anthropic Claude, OpenAI, Google Gemini (configurable)
+- **Auth:** Session-based authentication, role-based access control (RBAC)
+- **Deployment:** Single Docker container, SQLite internal database
+- **License:** MIT
+
+## Source Code
+
+- [Drizby on GitHub](https://github.com/cliftonc/drizby)
+- [drizzle-cube on GitHub](https://github.com/cliftonc/drizzle-cube)
+
+## Links
+
+- [Homepage](https://www.drizby.com)
+- [Pricing](https://www.drizby.com/pricing)
+- [Privacy Policy](https://www.drizby.com/privacy)
+- [Terms of Service](https://www.drizby.com/terms)
+- [Security & Compliance](https://www.drizby.com/security)
+- [Drizby Cloud](https://cloud.drizby.com)
+- [drizzle-cube Documentation](https://try.drizzle-cube.dev)
+
+## Frequently Asked Questions
+
+### General
+
+**What is Drizby?**
+Drizby is an open-source AI analytics platform powered by drizzle-cube. It provides dashboards, agentic AI notebooks, a visual analysis builder, and a full semantic layer — all in a single self-hostable application.
+
+**Is Drizby free?**
+Yes. Drizby is MIT licensed and free to self-host with unlimited users, dashboards, and notebooks. Drizby Cloud is a paid managed hosting option with usage-based pricing.
+
+**Do you store any of my data?**
+No. Drizby connects directly to your databases and queries pass through in real time. We never copy, cache, or store your data.
+
+**What databases does Drizby support?**
+PostgreSQL (including Neon, Supabase, and AWS Aurora), MySQL (including PlanetScale and TiDB), SQLite (including Turso), SingleStore, and DuckDB — any database supported by Drizzle ORM.
+
+**What is the semantic layer?**
+The semantic layer is powered by drizzle-cube. It lets you define metrics, dimensions, and measures once and access them everywhere — dashboards, APIs, AI agents, and MCP clients. It enforces consistent definitions and security context across all queries.
+
+**Can AI assistants query my data?**
+Yes. Drizby includes an MCP (Model Context Protocol) server with OAuth 2.1 authentication. AI assistants like Claude, VS Code Copilot, and Cursor can query your semantic layer directly with per-user security context.
+
+### Pricing
+
+**What counts as a "minute"?**
+One minute of a Drizby Cloud instance running. If you have two instances running for 30 minutes each, that's 60 minutes total.
+
+**Can I try Drizby Cloud before paying?**
+Yes. You get 24 hours of free runtime to explore. We collect a payment method up front but nothing is charged until you exceed the free tier. You'll receive alerts as your free minutes run low.
+
+**Why do you need a card up front?**
+Drizby Cloud provisions real compute resources for each instance. Collecting a payment method up front prevents abuse and ensures resources are available for genuine users. You won't be charged anything until your free tier is exhausted.
+
+**What's the refund policy?**
+All new subscriptions include a 30-day money-back guarantee. If you're not satisfied, contact us for a full refund.
+
+**Where does Drizby Cloud run?**
+Drizby Cloud runs on UpCloud infrastructure in the EU (Finland). Self-hosted data stays entirely on your infrastructure.
+
+### Alternatives
+
+**Is Drizby an alternative to Hex?**
+Yes. Like Hex, Drizby offers AI-powered notebooks for data exploration. Unlike Hex, Drizby is open source, self-hostable, includes a full semantic layer, and has no per-seat pricing. You also keep full control of your data — Drizby connects directly to your databases without copying or storing anything.
+
+**Is Drizby an alternative to Metabase?**
+Yes. Drizby provides dashboards, a visual query builder, and multi-database support like Metabase. Drizby adds agentic AI notebooks, a code-first semantic layer powered by drizzle-cube, an MCP server for AI assistants, and native TypeScript/Drizzle ORM integration.
+
+**Is Drizby an alternative to Apache Superset?**
+Yes. Drizby covers similar ground to Superset — dashboards, charts, and multi-database connectivity. Drizby is lighter weight, ships as a single Docker container, includes AI notebooks and an MCP server out of the box, and uses a TypeScript semantic layer instead of SQL-based metrics.
+
+## Company
+
+Drizby is operated by Guidemode Limited, a company registered in England and Wales (company number 16839248). Contact: hello@guidemode.dev
