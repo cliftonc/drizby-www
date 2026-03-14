@@ -1,0 +1,281 @@
+.chart-gallery {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.chart-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  padding: 0.4rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.chart-icon-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  color: var(--muted);
+}
+
+.chart-icon-btn:hover {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.chart-icon-btn.active {
+  background: var(--surface);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.chart-icon-svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.chart-icon-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chart-preview-area {
+  padding: 0;
+}
+
+/* Chart + config panel layout — white bg with drizzle-cube light theme vars */
+.chart-demo-interactive {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 1rem;
+  width: 100%;
+  min-height: 300px;
+  background: #ffffff;
+  border-radius: 0;
+  padding: 1rem;
+
+  /* drizzle-cube light theme variables */
+  --dc-surface: #ffffff;
+  --dc-surface-secondary: #f9fafb;
+  --dc-surface-tertiary: #f3f4f6;
+  --dc-surface-hover: #f3f4f6;
+  --dc-text: #111827;
+  --dc-text-secondary: #374151;
+  --dc-text-muted: #6b7280;
+  --dc-text-disabled: #9ca3af;
+  --dc-border: #e5e7eb;
+  --dc-border-secondary: #d1d5db;
+  --dc-border-hover: #d1d5db;
+  --dc-primary: #3b82f6;
+  --dc-primary-hover: #2563eb;
+  --dc-primary-content: #ffffff;
+  --dc-primary-rgb: 59, 130, 246;
+  --dc-accent: #3b82f6;
+  --dc-accent-hover: #2563eb;
+  --dc-accent-bg: #eff6ff;
+  --dc-accent-border: #93c5fd;
+  --dc-success: #10b981;
+  --dc-success-bg: #d1fae5;
+  --dc-success-border: #6ee7b7;
+  --dc-warning: #f59e0b;
+  --dc-warning-bg: #fef3c7;
+  --dc-warning-border: #fcd34d;
+  --dc-error: #ef4444;
+  --dc-error-bg: #fee2e2;
+  --dc-error-border: #fca5a5;
+  --dc-info: #3b82f6;
+  --dc-info-bg: #dbeafe;
+  --dc-info-border: #93c5fd;
+  --dc-danger: #dc2626;
+  --dc-danger-hover: #b91c1c;
+  --dc-danger-bg: #fee2e2;
+  --dc-muted: #6b7280;
+  --dc-muted-bg: #f3f4f6;
+  --dc-muted-border: #e5e7eb;
+  --dc-card-bg: #ffffff;
+  --dc-card-bg-hover: #f9fafb;
+  --dc-card-border: #e5e7eb;
+  --dc-card-border-hover: #d1d5db;
+  --dc-overlay: rgba(0, 0, 0, 0.75);
+  --dc-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --dc-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --dc-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --dc-bg: #ffffff;
+  --dc-bg-secondary: #f9fafb;
+  --dc-dimension-bg: #bbf7d0;
+  --dc-dimension-text: #15803d;
+  --dc-dimension-border: #86efac;
+  --dc-time-dimension-bg: #bfdbfe;
+  --dc-time-dimension-text: #1d4ed8;
+  --dc-time-dimension-border: #60a5fa;
+  --dc-measure-bg: #fde68a;
+  --dc-measure-text: #b45309;
+  --dc-measure-border: #fbbf24;
+  --dc-filter-bg: #e9d5ff;
+  --dc-filter-text: #7c3aed;
+  --dc-filter-border: #c084fc;
+  --dc-top-drop-space: 0px;
+  --dc-bottom-drop-space: 0px;
+  --dc-column-gap: 16px;
+  --dc-row-gap: 24px;
+  --dc-max-h: 85vh;
+
+  color: #111827;
+}
+
+.chart-demo-chart {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chart-demo-config {
+  border-left: 1px solid #e5e7eb;
+  padding-left: 1rem;
+  overflow-y: auto;
+  max-height: 400px;
+  font-size: 0.8rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* Spacing between config sections */
+.chart-demo-config > div > div {
+  margin-bottom: 0.5rem;
+}
+
+/* Checkbox rows — proper alignment and gap */
+.chart-demo-config label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+}
+
+/* Section headers */
+.chart-demo-config h3,
+.chart-demo-config h4,
+.chart-demo-config [class*="uppercase"],
+.chart-demo-config [class*="tracking-wide"] {
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.4rem !important;
+  color: #6b7280 !important;
+}
+
+/* Select dropdowns */
+.chart-demo-config select {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.4rem;
+  margin-top: 0.2rem;
+}
+
+/* Text inputs */
+.chart-demo-config input:not([type="checkbox"]):not([type="radio"]) {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.4rem;
+  margin-top: 0.2rem;
+}
+
+/* Help text below inputs */
+.chart-demo-config p,
+.chart-demo-config [class*="text-dc-text-muted"] {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  margin-top: 0.15rem;
+}
+
+/* Override SVG/chart rendering inside the demo area */
+.chart-demo-interactive svg {
+  overflow: visible !important;
+}
+
+.chart-demo-interactive .recharts-wrapper svg,
+.chart-demo-interactive .recharts-surface {
+  overflow: visible !important;
+}
+
+/* Config panel form elements */
+.chart-demo-interactive label {
+  color: #111827;
+  cursor: default;
+}
+
+.chart-demo-interactive input[type="checkbox"] {
+  accent-color: #3b82f6;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.chart-demo-interactive input:not([type="checkbox"]):not([type="radio"]),
+.chart-demo-interactive select {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font: inherit;
+  width: 100%;
+}
+
+.chart-demo-interactive button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Active/selected button in button groups */
+.chart-demo-interactive button[class*="bg-dc-primary"] {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+@media (max-width: 768px) {
+  .chart-icon-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .chart-demo-interactive {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-demo-config {
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+    padding-left: 0;
+    padding-top: 1rem;
+    max-height: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-icon-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

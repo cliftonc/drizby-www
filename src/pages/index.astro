@@ -1,4 +1,6 @@
 ---
+import Layout from '../layouts/Layout.astro';
+
 const images = [
   { src: '/images/drizby_1.png', alt: 'Drizby Home - AI-powered data exploration', caption: 'Ask questions about your data in natural language' },
   { src: '/images/drizby_2.png', alt: 'Dashboards - drag-and-drop analytics', caption: 'Drag-and-drop dashboards with rich visualizations' },
@@ -8,10 +10,11 @@ const images = [
 ];
 
 const features = [
-  { title: 'Semantic Layer', desc: 'Use your existing Drizzle schemas. Define metrics once, access them everywhere — dashboards, APIs, or AI agents.' },
-  { title: 'Dashboards', desc: 'Drag-and-drop grid dashboards with bar, line, area, pie, scatter, KPI cards, and data tables.' },
-  { title: 'AI Notebooks', desc: 'Multi-turn AI conversations about your data. Mixed content blocks, auto-save, and dashboard promotion.' },
-  { title: 'Analysis Builder', desc: 'Visual, no-code query builder. Select measures, dimensions, and filters with real-time results.' },
+  { title: 'Semantic Layer', desc: 'Use your existing Drizzle schemas. Define metrics once, access them everywhere — dashboards, APIs, or AI agents.', href: '/features/semantic-layer' },
+  { title: 'Dashboards', desc: 'Drag-and-drop grid dashboards with bar, line, area, pie, scatter, KPI cards, and data tables.', href: '/features/dashboards' },
+  { title: 'Agentic Notebooks', desc: 'Multi-turn AI conversations about your data. Mixed content blocks, auto-save, and dashboard promotion.', href: '/features/agentic-notebooks' },
+  { title: 'MCP Server', desc: 'Expose your semantic layer to AI assistants via Model Context Protocol with OAuth 2.1 authentication.', href: '/features/mcp-server' },
+  { title: 'Users & Groups', desc: 'Unlimited users with no per-seat pricing. Role-based access, group visibility, and Google OAuth built in.', href: '/features/users-and-groups' },
 ];
 
 const databases = [
@@ -59,100 +62,59 @@ const databases = [
   },
 ];
 
-const title = 'Drizby - Open-source BI powered by drizzle-cube | Drizby Cloud';
-const description = 'Open-source BI platform powered by drizzle-cube. Self-service analytics, AI agentic notebooks, and a full semantic layer — self-host or deploy instantly on Drizby Cloud.';
-const url = 'https://drizby.com';
+const pageTitle = 'Drizby - Open-source AI Analytics powered by drizzle-cube';
+const pageDescription = 'An open-source AI analytics platform powered by drizzle-cube. Host yourself or host with us — self-service analytics, AI agentic notebooks, and a full semantic layer.';
+const url = 'https://www.drizby.com';
 const ogImage = `${url}/images/drizby_2.png`;
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+<Layout title={pageTitle} description={pageDescription} ogImage={ogImage} canonicalPath="">
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Drizby",
+    "description": pageDescription,
+    "url": url,
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Docker",
+    "license": "https://opensource.org/licenses/MIT",
+    "image": ogImage,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "sourceOrganization": { "@type": "Person", "name": "Clifton Cunningham", "url": "https://github.com/cliftonc" },
+    "potentialAction": { "@type": "ViewAction", "name": "Try Drizby Cloud", "target": "https://cloud.drizby.com/register" }
+  })} />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="512x512" href="/logo.png" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/logo.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#0f1117" />
-
-    <!-- Primary Meta -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
-    <meta name="author" content="Clifton Cunningham" />
-    <meta name="keywords" content="drizby, drizby cloud, drizzle-cube, business intelligence, BI, analytics, semantic layer, drizzle orm, dashboards, AI notebooks, open source, managed hosting, postgres analytics" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={url} />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={url} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Drizby dashboard screenshot" />
-    <meta property="og:site_name" content="Drizby" />
-    <meta property="og:locale" content="en_US" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={url} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Drizby dashboard screenshot" />
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Drizby",
-      "description": description,
-      "url": url,
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Docker",
-      "license": "https://opensource.org/licenses/MIT",
-      "image": ogImage,
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "sourceOrganization": { "@type": "Person", "name": "Clifton Cunningham", "url": "https://github.com/cliftonc" },
-      "potentialAction": { "@type": "ViewAction", "name": "Try Drizby Cloud", "target": "https://cloud.drizby.com/register" }
-    })} />
-  </head>
-  <body>
-    <header>
-      <div class="header-inner">
-        <div class="brand">
-          <img src="/logo.png" alt="Drizby logo" class="logo" />
-          <h1>Drizby</h1>
-        </div>
-        <p class="tagline">Open-source BI platform powered by <a href="https://github.com/cliftonc/drizzle-cube" target="_blank" rel="noopener">drizzle-cube</a></p>
-        <p class="subtitle">Self-service analytics, AI agentic notebooks, and a full semantic layer &mdash; self-host with Docker or deploy instantly on Drizby Cloud.</p>
-        <nav>
-          <a class="btn" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener"><svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Drizby</a>
-          <a class="btn" href="https://github.com/cliftonc/drizzle-cube" target="_blank" rel="noopener"><svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> drizzle-cube</a>
-          <a class="btn btn-secondary" href="https://try.drizzle-cube.dev" target="_blank" rel="noopener">Try Drizzle-Cube</a>
-        </nav>
-        <div class="cloud-banner">
-          <div class="cloud-link">
-            <img src="/images/cloud-logo.png" alt="Drizby Cloud" class="cloud-icon" />
-            <span class="cloud-text">
-              <strong>Drizby Cloud</strong> <span class="cloud-badge">New</span><br/>
-              Skip the setup &mdash; deploy a fully managed Drizby instance in seconds. Connect your Postgres database and start exploring your data with AI-powered analytics, dashboards, and notebooks. Free during initial launch.
-            </span>
-            <span class="cloud-actions">
-              <a href="https://cloud.drizby.com/register" target="_blank" rel="noopener" class="cloud-btn cloud-btn-primary">Register</a>
-              <a href="https://cloud.drizby.com/login" target="_blank" rel="noopener" class="cloud-btn">Login</a>
-            </span>
-          </div>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <img src="/logo.png" alt="Drizby logo" class="logo" />
+        <h1>Drizby</h1>
+      </div>
+      <p class="tagline">An open-source AI analytics platform powered by <a href="https://github.com/cliftonc/drizzle-cube" target="_blank" rel="noopener">drizzle-cube</a></p>
+      <p class="subtitle">Host yourself or host with us &mdash; self-service analytics, AI agentic notebooks, and a full semantic layer.</p>
+      <div class="hero-buttons">
+        <a class="btn" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener"><svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> Drizby</a>
+        <a class="btn" href="https://github.com/cliftonc/drizzle-cube" target="_blank" rel="noopener"><svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> drizzle-cube</a>
+        <a class="btn btn-secondary" href="https://try.drizzle-cube.dev" target="_blank" rel="noopener">Try Drizzle-Cube</a>
+      </div>
+      <div class="cloud-banner">
+        <div class="cloud-link">
+          <img src="/images/cloud-logo.png" alt="Drizby Cloud" class="cloud-icon" />
+          <span class="cloud-text">
+            <strong>Drizby Cloud</strong> <span class="cloud-badge">New</span><br/>
+            Skip the setup &mdash; deploy a fully managed Drizby instance in seconds. Connect your Postgres database and start exploring your data with AI-powered analytics, dashboards, and notebooks. Free during initial launch.
+          </span>
+          <span class="cloud-actions">
+            <a href="https://cloud.drizby.com/register" target="_blank" rel="noopener" class="cloud-btn cloud-btn-primary">Register</a>
+            <a href="https://cloud.drizby.com/login" target="_blank" rel="noopener" class="cloud-btn">Login</a>
+          </span>
         </div>
       </div>
+    </div>
 
-      <!-- Decorative flowing lines under buttons, full width -->
-      <div class="hero-curves">
+    <!-- Decorative flowing lines under buttons, full width -->
+    <div class="hero-curves">
       <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice" fill="none">
         <path d="M0 60 Q200 20 400 50 T800 30 T1200 55" stroke="url(#g1)" stroke-width="2.5" fill="none" />
         <path d="M0 100 Q300 60 600 100 T1200 80" stroke="url(#g2)" stroke-width="2" fill="none" opacity="0.8" />
@@ -188,201 +150,179 @@ const ogImage = `${url}/images/drizby_2.png`;
         </defs>
       </svg>
     </div>
-    </header>
+  </header>
 
-    <main>
-      <section class="docker">
-        <p>One command to get started, then open it <a href="http://localhost:3461" target="_blank" rel="noopener">by clicking here</a>:</p>
-        <div class="docker-cmd">
-          <pre><code>docker run -p 3461:3461 -v drizby-data:/app/data ghcr.io/cliftonc/drizby:main</code></pre>
-          <button class="copy-btn" aria-label="Copy to clipboard" onclick="navigator.clipboard.writeText('docker run -p 3461:3461 -v drizby-data:/app/data ghcr.io/cliftonc/drizby:main').then(()=>{this.classList.add('copied');setTimeout(()=>this.classList.remove('copied'),1500)})">
-            <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-        </div>
-      </section>
-
-      <!-- Flow connector: docker -> gallery -->
-      <div class="flow-connector">
-        <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
-          <path d="M 300 0 C 300 75, 900 75, 900 150" stroke="url(#flowG1)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
-          <path d="M 305 0 C 305 70, 905 80, 905 150" stroke="url(#flowG2)" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3" />
-          <circle r="10" fill="url(#pG1)">
-            <animateMotion dur="8s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" />
-            <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="8s" repeatCount="indefinite" />
-          </circle>
-          <circle r="6" fill="url(#pG2)">
-            <animateMotion dur="5s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" begin="2s" />
-            <animate attributeName="opacity" values="0;0.6;0.6;0" keyTimes="0;0.1;0.9;1" dur="5s" repeatCount="indefinite" begin="2s" />
-          </circle>
-          <circle r="4" fill="url(#pG1)">
-            <animateMotion dur="3.5s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" begin="0.5s" />
-            <animate attributeName="opacity" values="0;0.5;0.5;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="0.5s" />
-          </circle>
-          <defs>
-            <linearGradient id="flowG1" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5" />
-              <stop offset="50%" stop-color="#818cf8" stop-opacity="1" />
-              <stop offset="100%" stop-color="#6366f1" stop-opacity="0.5" />
-            </linearGradient>
-            <linearGradient id="flowG2" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#a5b4fc" stop-opacity="0.3" />
-              <stop offset="50%" stop-color="#c7d2fe" stop-opacity="0.6" />
-              <stop offset="100%" stop-color="#a5b4fc" stop-opacity="0.3" />
-            </linearGradient>
-            <radialGradient id="pG1">
-              <stop offset="0%" stop-color="#818cf8" stop-opacity="1" />
-              <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
-            </radialGradient>
-            <radialGradient id="pG2">
-              <stop offset="0%" stop-color="#a5b4fc" stop-opacity="0.8" />
-              <stop offset="100%" stop-color="#818cf8" stop-opacity="0" />
-            </radialGradient>
-          </defs>
-        </svg>
+  <main>
+    <section class="docker">
+      <p>One command to get started, then open it <a href="http://localhost:3461" target="_blank" rel="noopener">by clicking here</a>:</p>
+      <div class="docker-cmd">
+        <pre><code>docker run -p 3461:3461 -v drizby-data:/app/data ghcr.io/cliftonc/drizby:main</code></pre>
+        <button class="copy-btn" aria-label="Copy to clipboard" onclick="navigator.clipboard.writeText('docker run -p 3461:3461 -v drizby-data:/app/data ghcr.io/cliftonc/drizby:main').then(()=>{this.classList.add('copied');setTimeout(()=>this.classList.remove('copied'),1500)})">
+          <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
       </div>
+    </section>
 
-      <section class="gallery">
-        {images.map(({ src, alt, caption }, i) => (
-          <>
-            <figure>
-              <img src={src} alt={alt} loading="lazy" />
-              <figcaption>{caption}</figcaption>
-            </figure>
-            {i < images.length - 1 && (
-              <div class="flow-connector flow-connector-sm">
-                <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
-                  <path
-                    d={i % 2 === 0
+    <!-- Flow connector: docker -> gallery -->
+    <div class="flow-connector">
+      <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
+        <path d="M 300 0 C 300 75, 900 75, 900 150" stroke="url(#flowG1)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+        <path d="M 305 0 C 305 70, 905 80, 905 150" stroke="url(#flowG2)" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3" />
+        <circle r="10" fill="url(#pG1)">
+          <animateMotion dur="8s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" />
+          <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="8s" repeatCount="indefinite" />
+        </circle>
+        <circle r="6" fill="url(#pG2)">
+          <animateMotion dur="5s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" begin="2s" />
+          <animate attributeName="opacity" values="0;0.6;0.6;0" keyTimes="0;0.1;0.9;1" dur="5s" repeatCount="indefinite" begin="2s" />
+        </circle>
+        <circle r="4" fill="url(#pG1)">
+          <animateMotion dur="3.5s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" begin="0.5s" />
+          <animate attributeName="opacity" values="0;0.5;0.5;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="0.5s" />
+        </circle>
+        <defs>
+          <linearGradient id="flowG1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5" />
+            <stop offset="50%" stop-color="#818cf8" stop-opacity="1" />
+            <stop offset="100%" stop-color="#6366f1" stop-opacity="0.5" />
+          </linearGradient>
+          <linearGradient id="flowG2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#a5b4fc" stop-opacity="0.3" />
+            <stop offset="50%" stop-color="#c7d2fe" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#a5b4fc" stop-opacity="0.3" />
+          </linearGradient>
+          <radialGradient id="pG1">
+            <stop offset="0%" stop-color="#818cf8" stop-opacity="1" />
+            <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="pG2">
+            <stop offset="0%" stop-color="#a5b4fc" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#818cf8" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <section class="gallery">
+      {images.map(({ src, alt, caption }, i) => (
+        <>
+          <figure>
+            <img src={src} alt={alt} loading="lazy" />
+            <figcaption>{caption}</figcaption>
+          </figure>
+          {i < images.length - 1 && (
+            <div class="flow-connector flow-connector-sm">
+              <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
+                <path
+                  d={i % 2 === 0
+                    ? "M 900 0 C 900 75, 300 75, 300 150"
+                    : "M 300 0 C 300 75, 900 75, 900 150"}
+                  stroke="url(#flowG1)" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4"
+                />
+                <circle r="6" fill="url(#pG1)">
+                  <animateMotion
+                    dur="6s" repeatCount="indefinite"
+                    path={i % 2 === 0
                       ? "M 900 0 C 900 75, 300 75, 300 150"
                       : "M 300 0 C 300 75, 900 75, 900 150"}
-                    stroke="url(#flowG1)" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4"
                   />
-                  <circle r="6" fill="url(#pG1)">
-                    <animateMotion
-                      dur="6s" repeatCount="indefinite"
-                      path={i % 2 === 0
-                        ? "M 900 0 C 900 75, 300 75, 300 150"
-                        : "M 300 0 C 300 75, 900 75, 900 150"}
-                    />
-                    <animate attributeName="opacity" values="0;0.6;0.6;0" keyTimes="0;0.1;0.9;1" dur="6s" repeatCount="indefinite" />
-                  </circle>
-                  <circle r="3" fill="url(#pG2)">
-                    <animateMotion
-                      dur="4s" repeatCount="indefinite" begin="1.5s"
-                      path={i % 2 === 0
-                        ? "M 900 0 C 900 75, 300 75, 300 150"
-                        : "M 300 0 C 300 75, 900 75, 900 150"}
-                    />
-                    <animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" begin="1.5s" />
-                  </circle>
-                </svg>
-              </div>
-            )}
-          </>
-        ))}
-      </section>
+                  <animate attributeName="opacity" values="0;0.6;0.6;0" keyTimes="0;0.1;0.9;1" dur="6s" repeatCount="indefinite" />
+                </circle>
+                <circle r="3" fill="url(#pG2)">
+                  <animateMotion
+                    dur="4s" repeatCount="indefinite" begin="1.5s"
+                    path={i % 2 === 0
+                      ? "M 900 0 C 900 75, 300 75, 300 150"
+                      : "M 300 0 C 300 75, 900 75, 900 150"}
+                  />
+                  <animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" begin="1.5s" />
+                </circle>
+              </svg>
+            </div>
+          )}
+        </>
+      ))}
+    </section>
 
-      <!-- Flow connector: gallery -> features -->
-      <div class="flow-connector">
-        <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
-          <path d="M 900 0 C 900 75, 300 75, 300 150" stroke="url(#flowG1)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
-          <circle r="8" fill="url(#pG1)">
-            <animateMotion dur="6s" repeatCount="indefinite" path="M 900 0 C 900 75, 300 75, 300 150" />
-            <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="6s" repeatCount="indefinite" />
-          </circle>
-          <circle r="4" fill="url(#pG2)">
-            <animateMotion dur="3.5s" repeatCount="indefinite" path="M 900 0 C 900 75, 300 75, 300 150" begin="2s" />
-            <animate attributeName="opacity" values="0;0.5;0.5;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="2s" />
-          </circle>
-        </svg>
-      </div>
+    <!-- Flow connector: gallery -> features -->
+    <div class="flow-connector">
+      <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
+        <path d="M 900 0 C 900 75, 300 75, 300 150" stroke="url(#flowG1)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+        <circle r="8" fill="url(#pG1)">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M 900 0 C 900 75, 300 75, 300 150" />
+          <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="6s" repeatCount="indefinite" />
+        </circle>
+        <circle r="4" fill="url(#pG2)">
+          <animateMotion dur="3.5s" repeatCount="indefinite" path="M 900 0 C 900 75, 300 75, 300 150" begin="2s" />
+          <animate attributeName="opacity" values="0;0.5;0.5;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="2s" />
+        </circle>
+      </svg>
+    </div>
 
-      <section class="features">
-        {features.map(({ title, desc }) => (
-          <div class="feature">
+    <section class="features">
+      <h2 class="section-title">Features</h2>
+      <div class="features-grid">
+        {features.map(({ title, desc, href }) => (
+          <a href={href} class="feature">
             <h3>{title}</h3>
             <p>{desc}</p>
+            <span class="feature-link">Learn more &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Flow connector: features -> databases -->
+    <div class="flow-connector">
+      <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
+        <path d="M 300 0 C 300 75, 900 75, 900 150" stroke="url(#flowG1)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+        <circle r="8" fill="url(#pG1)">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" />
+          <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="6s" repeatCount="indefinite" />
+        </circle>
+        <circle r="4" fill="url(#pG2)">
+          <animateMotion dur="3.5s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" begin="2s" />
+          <animate attributeName="opacity" values="0;0.5;0.5;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="2s" />
+        </circle>
+      </svg>
+    </div>
+
+    <section class="databases">
+      <h2 class="section-title">Supported Databases</h2>
+      <p class="databases-subtitle">Connect to any database supported by Drizzle ORM</p>
+      <div class="db-grid">
+        {databases.map(({ category, color, providers }) => (
+          <div class="db-category">
+            <div class="db-category-header" style={`border-color: ${color}`}>
+              <span class="db-category-dot" style={`background: ${color}`} />
+              <h3>{category}</h3>
+            </div>
+            <div class="db-providers">
+              {providers.map(({ name, logo, url }) => (
+                <a href={url} target="_blank" rel="noopener" class="db-provider">
+                  <img src={logo} alt={`${name} logo`} class="db-logo" loading="lazy" />
+                  <span class="db-name">{name}</span>
+                </a>
+              ))}
+            </div>
           </div>
         ))}
-      </section>
-
-      <!-- Flow connector: features -> databases -->
-      <div class="flow-connector">
-        <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
-          <path d="M 300 0 C 300 75, 900 75, 900 150" stroke="url(#flowG1)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
-          <circle r="8" fill="url(#pG1)">
-            <animateMotion dur="6s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" />
-            <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="6s" repeatCount="indefinite" />
-          </circle>
-          <circle r="4" fill="url(#pG2)">
-            <animateMotion dur="3.5s" repeatCount="indefinite" path="M 300 0 C 300 75, 900 75, 900 150" begin="2s" />
-            <animate attributeName="opacity" values="0;0.5;0.5;0" keyTimes="0;0.1;0.9;1" dur="3.5s" repeatCount="indefinite" begin="2s" />
-          </circle>
-        </svg>
       </div>
-
-      <section class="databases">
-        <h2>Supported Databases</h2>
-        <p class="databases-subtitle">Connect to any database supported by Drizzle ORM</p>
-        <div class="db-grid">
-          {databases.map(({ category, color, providers }) => (
-            <div class="db-category">
-              <div class="db-category-header" style={`border-color: ${color}`}>
-                <span class="db-category-dot" style={`background: ${color}`} />
-                <h3>{category}</h3>
-              </div>
-              <div class="db-providers">
-                {providers.map(({ name, logo, url }) => (
-                  <a href={url} target="_blank" rel="noopener" class="db-provider">
-                    <img src={logo} alt={`${name} logo`} class="db-logo" loading="lazy" />
-                    <span class="db-name">{name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>MIT License &middot; <a href="https://github.com/cliftonc/drizby">GitHub</a> &middot; <a href="https://cloud.drizby.com">Drizby Cloud</a></p>
-    </footer>
-  </body>
-</html>
+    </section>
+  </main>
+</Layout>
 
 <style>
-  :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --border: #2a2d3a;
-    --text: #e1e4eb;
-    --muted: #8b8fa3;
-    --accent: #6366f1;
-    --accent-hover: #818cf8;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-  }
-
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { color: var(--accent-hover); }
-
-  /* Header */
-  header {
+  /* Hero */
+  .hero {
     padding: 5rem 1.5rem 0;
     text-align: center;
     background: var(--bg);
     overflow: visible;
   }
 
-  .header-inner {
+  .hero-inner {
     max-width: 800px;
     margin: 0 auto;
   }
@@ -428,7 +368,7 @@ const ogImage = `${url}/images/drizby_2.png`;
     opacity: 0.85;
   }
 
-  nav {
+  .hero-buttons {
     margin-top: 2rem;
     display: flex;
     gap: 0.75rem;
@@ -437,29 +377,30 @@ const ogImage = `${url}/images/drizby_2.png`;
   }
 
   .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 0.6rem 1.4rem;
     border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 500;
     border: 1px solid var(--border);
     color: var(--text);
+    text-decoration: none;
     transition: border-color 0.15s, background 0.15s;
   }
   .btn:hover { border-color: var(--accent); color: var(--text); }
   .gh-icon { width: 1em; height: 1em; vertical-align: -0.125em; margin-right: 0.3em; }
-  .btn-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
+
+  .btn-secondary {
+    color: var(--muted);
+    border-color: var(--border);
   }
-  .btn-primary:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
-    color: #fff;
+  .btn-secondary:hover {
+    color: var(--text);
+    border-color: var(--accent);
   }
 
-  /* Hero curves - inside header, under buttons */
+  /* Hero curves */
   .hero-curves {
     width: 100%;
     margin-top: 1.5rem;
@@ -469,26 +410,6 @@ const ogImage = `${url}/images/drizby_2.png`;
     display: block;
     width: 100%;
     height: auto;
-  }
-  /* Flow connectors */
-  .flow-connector {
-    width: 100%;
-    height: 8rem;
-    overflow: visible;
-  }
-  .flow-connector svg {
-    width: 100%;
-    height: 100%;
-  }
-  .flow-connector-sm {
-    height: 5rem;
-  }
-
-  /* Main */
-  main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1.5rem 4rem;
   }
 
   /* Cloud banner */
@@ -576,13 +497,25 @@ const ogImage = `${url}/images/drizby_2.png`;
     color: #fff;
   }
 
-  .btn-secondary {
-    color: var(--muted);
-    border-color: var(--border);
+  /* Flow connectors */
+  .flow-connector {
+    width: 100%;
+    height: 8rem;
+    overflow: visible;
   }
-  .btn-secondary:hover {
-    color: var(--text);
-    border-color: var(--accent);
+  .flow-connector svg {
+    width: 100%;
+    height: 100%;
+  }
+  .flow-connector-sm {
+    height: 5rem;
+  }
+
+  /* Main */
+  main {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
   }
 
   /* Docker */
@@ -659,29 +592,8 @@ const ogImage = `${url}/images/drizby_2.png`;
     text-align: center;
   }
 
-  /* Features */
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-  .feature {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-    transition: border-color 0.2s;
-  }
-  .feature:hover { border-color: var(--accent); }
-  .feature h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-  .feature p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-
-  /* Databases */
-  .databases {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  .databases h2 {
+  /* Section titles */
+  .section-title {
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -689,11 +601,65 @@ const ogImage = `${url}/images/drizby_2.png`;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Features */
+  .features {
+    text-align: center;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .feature {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .feature:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+    transform: translateY(-2px);
+    color: var(--text);
+  }
+  .feature h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+  .feature p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+    flex: 1;
+    text-align: left;
+  }
+  .feature-link {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    transition: color 0.15s;
+  }
+  .feature:hover .feature-link {
+    color: var(--accent-hover);
+  }
+
+  /* Databases */
+  .databases {
+    text-align: center;
+    margin-top: 1rem;
   }
   .databases-subtitle {
     color: var(--muted);
     font-size: 0.95rem;
-    margin-top: 0.5rem;
+    margin-top: -0.75rem;
     margin-bottom: 2rem;
   }
   .db-grid {
@@ -762,19 +728,10 @@ const ogImage = `${url}/images/drizby_2.png`;
     font-weight: 500;
   }
 
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 2rem 1.5rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
-
   @media (max-width: 600px) {
     h1 { font-size: 2.25rem; }
     .logo { height: 2.5rem; width: auto; }
-    header { padding: 3rem 1rem 1.5rem; }
+    .hero { padding: 3rem 1rem 0; }
     .cloud-link { flex-direction: column; text-align: center; padding: 1.25rem; }
     .cloud-text { text-align: center; }
     .cloud-actions { flex-direction: row; justify-content: center; }
@@ -782,5 +739,6 @@ const ogImage = `${url}/images/drizby_2.png`;
     .flow-connector { height: 5rem; }
     .flow-connector-sm { height: 3rem; }
     .db-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
   }
 </style>

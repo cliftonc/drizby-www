@@ -11,6 +11,22 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
-    "astro": "^5.17.1"
+    "@astrojs/react": "^5.0.0",
+    "@astrojs/sitemap": "^3.7.1",
+    "@iconify/types": "^2.0.0",
+    "@nivo/heatmap": "^0.99.0",
+    "@xyflow/react": "^12.10.1",
+    "astro": "^5.17.1",
+    "d3": "^7.9.0",
+    "d3-sankey": "^0.12.3",
+    "d3-shape": "^3.2.0",
+    "drizzle-cube": "^0.4.30",
+    "elkjs": "^0.11.1",
+    "modern-screenshot": "^4.6.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-grid-layout": "^2.2.2",
+    "react-is": "^19.2.4",
+    "recharts": "^3.8.0"
   }
 }
