@@ -23,7 +23,6 @@ import Layout from '../layouts/Layout.astro';
             <h3>Authentication</h3>
             <ul>
               <li>Email and password authentication with secure hashing</li>
-              <li>Google OAuth single sign-on</li>
               <li>Session-based authentication with secure cookie management</li>
             </ul>
           </div>
@@ -73,7 +72,7 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="legal-card">
           <h3>Encryption at Rest</h3>
-          <p>All data is encrypted at rest. Self-hosted deployments use SQLite with filesystem-level encryption as configured by the operator. Drizby Cloud uses Neon Postgres with AES-256 encryption at rest.</p>
+          <p>All data is encrypted at rest. Self-hosted deployments use SQLite with filesystem-level encryption as configured by the operator. Drizby Cloud runs on UpCloud infrastructure with encrypted block storage.</p>
         </div>
 
         <div class="legal-card">
@@ -94,22 +93,21 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="compliance-grid">
           <div class="legal-card">
-            <h3>Cloudflare</h3>
-            <p class="compliance-context">CDN, security, and traffic management for Cloud deployments</p>
+            <h3>UpCloud</h3>
+            <p class="compliance-context">Cloud infrastructure and server hosting for Cloud deployments (Helsinki, Finland)</p>
             <div class="badge-row">
-              <span class="compliance-badge">SOC 2 Type II</span>
               <span class="compliance-badge">ISO 27001</span>
-              <span class="compliance-badge">PCI DSS Level 1</span>
+              <span class="compliance-badge">ISO 27017</span>
+              <span class="compliance-badge">ISO 27018</span>
+              <span class="compliance-badge">SOC 2</span>
             </div>
           </div>
 
           <div class="legal-card">
-            <h3>Neon</h3>
-            <p class="compliance-context">Postgres database hosting for Cloud deployments</p>
+            <h3>DodoPayments</h3>
+            <p class="compliance-context">Payment processing for Cloud subscriptions</p>
             <div class="badge-row">
-              <span class="compliance-badge">SOC 2 Type II</span>
-              <span class="compliance-badge">ISO 27001</span>
-              <span class="compliance-badge">ISO 27701</span>
+              <span class="compliance-badge">PCI DSS</span>
             </div>
           </div>
         </div>
@@ -139,7 +137,7 @@ import Layout from '../layouts/Layout.astro';
         <h2>Vulnerability Reporting</h2>
         <p>We take security vulnerabilities seriously. If you discover a security issue in Drizby, please report it responsibly:</p>
         <div class="legal-card contact-card">
-          <p><strong>Security Team:</strong> <a href="mailto:security@drizby.com">security@drizby.com</a></p>
+          <p><strong>Security Team:</strong> <a href="mailto:security@guidemode.dev">security@guidemode.dev</a></p>
           <p>Please include a detailed description of the vulnerability, steps to reproduce, and any potential impact. We will acknowledge receipt within 48 hours and aim to provide an initial assessment within 5 business days.</p>
           <p>We kindly ask that you do not publicly disclose vulnerabilities until we have had reasonable time to address them.</p>
         </div>

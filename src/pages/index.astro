@@ -62,6 +62,21 @@ const databases = [
   },
 ];
 
+const faqs = [
+  { q: 'What is Drizby?', a: 'Drizby is an open-source AI analytics platform powered by drizzle-cube. It provides dashboards, agentic AI notebooks, a visual analysis builder, and a full semantic layer — all in a single self-hostable application.' },
+  { q: 'Is Drizby free?', a: 'Yes. Drizby is MIT licensed and free to self-host with unlimited users, dashboards, and notebooks. Drizby Cloud is a paid managed hosting option with usage-based pricing.' },
+  { q: 'Do you store any of my data?', a: 'No. Drizby connects directly to your databases and queries pass through in real time. We never copy, cache, or store your data.' },
+  { q: 'What databases does Drizby support?', a: 'Drizby supports PostgreSQL (including Neon, Supabase, and AWS Aurora), MySQL (including PlanetScale and TiDB), SQLite (including Turso), SingleStore, and DuckDB — any database supported by Drizzle ORM.' },
+  { q: 'What is the semantic layer?', a: 'The semantic layer is powered by drizzle-cube. It lets you define metrics, dimensions, and measures once and access them everywhere — dashboards, APIs, AI agents, and MCP clients. It enforces consistent definitions and security context across all queries.' },
+  { q: 'Can AI assistants query my data?', a: 'Yes. Drizby includes an MCP (Model Context Protocol) server with OAuth 2.1 authentication. AI assistants like Claude, VS Code Copilot, and Cursor can query your semantic layer directly with per-user security context.' },
+];
+
+const alternatives = [
+  { q: 'Is Drizby an alternative to Hex?', a: 'Yes. Like Hex, Drizby offers AI-powered notebooks for data exploration. Unlike Hex, Drizby is open source, self-hostable, includes a full semantic layer, and has no per-seat pricing. You also keep full control of your data — Drizby connects directly to your databases without copying or storing anything.' },
+  { q: 'Is Drizby an alternative to Metabase?', a: 'Yes. Drizby provides dashboards, a visual query builder, and multi-database support like Metabase. Drizby adds agentic AI notebooks, a code-first semantic layer powered by drizzle-cube, an MCP server for AI assistants, and native TypeScript/Drizzle ORM integration.' },
+  { q: 'Is Drizby an alternative to Apache Superset?', a: 'Yes. Drizby covers similar ground to Superset — dashboards, charts, and multi-database connectivity. Drizby is lighter weight, ships as a single Docker container, includes AI notebooks and an MCP server out of the box, and uses a TypeScript semantic layer instead of SQL-based metrics.' },
+];
+
 const pageTitle = 'Drizby - Open-source AI Analytics powered by drizzle-cube';
 const pageDescription = 'An open-source AI analytics platform powered by drizzle-cube. Host yourself or host with us — self-service analytics, AI agentic notebooks, and a full semantic layer.';
 const url = 'https://www.drizby.com';
@@ -83,6 +98,16 @@ const ogImage = `${url}/images/drizby_2.png`;
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "sourceOrganization": { "@type": "Person", "name": "Clifton Cunningham", "url": "https://github.com/cliftonc" },
     "potentialAction": { "@type": "ViewAction", "name": "Try Drizby Cloud", "target": "https://cloud.drizby.com/register" }
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [...faqs, ...alternatives].map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
   })} />
 
   <header class="hero">
@@ -306,6 +331,42 @@ const ogImage = `${url}/images/drizby_2.png`;
                 </a>
               ))}
             </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Flow connector: databases -> faq -->
+    <div class="flow-connector">
+      <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid meet" fill="none">
+        <path d="M 900 0 C 900 75, 300 75, 300 150" stroke="url(#flowG1)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6" />
+        <circle r="8" fill="url(#pG1)">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M 900 0 C 900 75, 300 75, 300 150" />
+          <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="6s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+    </div>
+
+    <section class="faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        {faqs.map(({ q, a }) => (
+          <div class="faq-card">
+            <h3>{q}</h3>
+            <p>{a}</p>
+          </div>
+        ))}
+      </div>
+      <p class="faq-more">Have questions about pricing? See our <a href="/pricing">pricing FAQ</a>.</p>
+    </section>
+
+    <section class="alternatives">
+      <h2 class="section-title">Alternatives</h2>
+      <div class="alt-grid">
+        {alternatives.map(({ q, a }) => (
+          <div class="faq-card">
+            <h3>{q}</h3>
+            <p>{a}</p>
           </div>
         ))}
       </div>
@@ -728,6 +789,51 @@ const ogImage = `${url}/images/drizby_2.png`;
     font-weight: 500;
   }
 
+  /* FAQ */
+  .faq {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    text-align: left;
+  }
+  .faq-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .faq-card:hover { border-color: var(--accent); }
+  .faq-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .faq-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.9rem;
+  }
+  .faq-more {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .faq-more a { color: var(--accent); }
+  .faq-more a:hover { color: var(--accent-hover); }
+
+  /* Alternatives */
+  .alternatives {
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .alt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    text-align: left;
+  }
+
   @media (max-width: 600px) {
     h1 { font-size: 2.25rem; }
     .logo { height: 2.5rem; width: auto; }
@@ -740,5 +846,7 @@ const ogImage = `${url}/images/drizby_2.png`;
     .flow-connector-sm { height: 3rem; }
     .db-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .alt-grid { grid-template-columns: 1fr; }
   }
 </style>

@@ -1,0 +1,488 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pricingFaqs = [
+  { q: 'What counts as a "minute"?', a: 'One minute of a Drizby Cloud instance running. If you have two instances running for 30 minutes each, that\'s 60 minutes total.' },
+  { q: 'Is the self-hosted version really free?', a: 'Yes. Drizby is MIT licensed open-source software. You can run it on your own infrastructure with no limits, no licence fees, and no restrictions.' },
+  { q: 'Can I try Drizby Cloud before paying?', a: 'Yes. You get 24 hours of free runtime to explore. We collect a payment method up front but nothing is charged until you exceed the free tier. You\'ll receive alerts as your free minutes run low, so there are no surprises.' },
+  { q: 'Why do you need a card up front?', a: 'Drizby Cloud provisions real compute resources for each instance. Collecting a payment method up front prevents abuse and ensures resources are available for genuine users. You won\'t be charged anything until your free tier is exhausted.' },
+  { q: 'What payment methods do you accept?', a: 'We accept all major credit and debit cards through our payment processor, DodoPayments.' },
+  { q: "What's the refund policy?", a: 'All new subscriptions include a 30-day money-back guarantee. If you\'re not satisfied, contact us for a full refund.' },
+  { q: 'Do you store any of my data?', a: 'No. Drizby connects directly to your databases and queries pass through the server in real time. We never copy, cache, or store your data. Your databases stay exactly where they are.' },
+  { q: 'Where does Drizby Cloud run?', a: 'Drizby Cloud runs on UpCloud infrastructure in the EU (Finland). Self-hosted data stays entirely on your infrastructure.' },
+];
+---
+
+<Layout
+  title="Pricing - Drizby"
+  description="Simple usage-based pricing. Self-host free forever or use Drizby Cloud with pay-per-minute billing. No per-seat fees."
+  canonicalPath="/pricing"
+>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pricingFaqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+
+  <main class="pricing-page">
+    <section class="hero">
+      <h1>Pricing</h1>
+      <p class="hero-desc">Simple, transparent, usage-based pricing. No per-seat fees.</p>
+    </section>
+
+    <section class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-header">
+          <h2>Self-Hosted</h2>
+          <div class="plan-price">Free</div>
+          <p class="plan-price-detail">MIT licensed, forever</p>
+        </div>
+        <ul class="plan-features">
+          <li>Unlimited users</li>
+          <li>Unlimited dashboards</li>
+          <li>Unlimited notebooks</li>
+          <li>Unlimited connections</li>
+          <li>MCP server included</li>
+          <li>Full semantic layer</li>
+          <li>All chart types</li>
+          <li>Your infrastructure, your data</li>
+        </ul>
+        <a class="plan-btn" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener">
+          <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Get Started on GitHub
+        </a>
+      </div>
+
+      <div class="plan-card plan-card-featured">
+        <div class="plan-badge">Managed</div>
+        <div class="plan-header">
+          <h2>Drizby Cloud</h2>
+          <div class="plan-price">Pay as you go</div>
+          <p class="plan-price-detail">Per minute of instance runtime</p>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Self-Hosted</li>
+          <li>24 hours free to get started</li>
+          <li>Warned before free tier expires</li>
+          <li>Nothing charged up front</li>
+          <li>Per-minute billing &mdash; stop any time</li>
+          <li>Managed hosting &amp; backups</li>
+          <li>Automatic updates</li>
+          <li>EU data residency (UpCloud, Finland)</li>
+          <li>30-day money-back guarantee</li>
+        </ul>
+        <a class="plan-btn plan-btn-primary" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">
+          Start Free on Drizby Cloud
+        </a>
+      </div>
+    </section>
+
+    <section class="cost-section">
+      <h2 class="section-title">Cost Calculator</h2>
+      <p class="cost-subtitle">Estimated cost for 24/7 instance runtime at <strong>&pound;0.000347/min</strong> (<strong>&pound;0.02/hr</strong>)</p>
+      <div class="cost-table-wrapper">
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Per Day</th>
+              <th>Per Week</th>
+              <th>Per Month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 instance</td>
+              <td>&pound;0.50</td>
+              <td>&pound;3.50</td>
+              <td class="cost-highlight">&pound;14.99</td>
+            </tr>
+            <tr>
+              <td>2 instances</td>
+              <td>&pound;1.00</td>
+              <td>&pound;7.00</td>
+              <td class="cost-highlight">&pound;29.98</td>
+            </tr>
+            <tr>
+              <td>5 instances</td>
+              <td>&pound;2.50</td>
+              <td>&pound;17.50</td>
+              <td class="cost-highlight">&pound;74.95</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cost-note">Instances are billed only while running. Stop an instance and billing stops immediately. No minimum commitment.</p>
+    </section>
+
+    <section class="why-section">
+      <h2 class="section-title">Why no per-seat pricing?</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>Built for an agentic world</h3>
+          <p>When AI agents query data alongside humans, per-seat pricing doesn't make sense. Every user &mdash; person or agent &mdash; is treated the same.</p>
+        </div>
+        <div class="why-card">
+          <h3>Predictable costs</h3>
+          <p>You pay for compute, not headcount. Add your whole team without worrying about escalating licence fees. Scale users without scaling costs.</p>
+        </div>
+        <div class="why-card">
+          <h3>Fair &amp; transparent</h3>
+          <p>No tiers, no feature gates, no surprises. Every Drizby instance &mdash; self-hosted or cloud &mdash; gets every feature. The only variable is runtime.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq-grid">
+        <div class="faq-card">
+          <h3>What counts as a "minute"?</h3>
+          <p>One minute of a Drizby Cloud instance running. If you have two instances running for 30 minutes each, that's 60 minutes total.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Is the self-hosted version really free?</h3>
+          <p>Yes. Drizby is MIT licensed open-source software. You can run it on your own infrastructure with no limits, no licence fees, and no restrictions.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Can I try Drizby Cloud before paying?</h3>
+          <p>Yes. You get 24 hours of free runtime to explore. We collect a payment method up front but nothing is charged until you exceed the free tier. You'll receive alerts as your free minutes run low, so there are no surprises.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Why do you need a card up front?</h3>
+          <p>Drizby Cloud provisions real compute resources for each instance. Collecting a payment method up front prevents abuse and ensures resources are available for genuine users. You won't be charged anything until your free tier is exhausted.</p>
+        </div>
+        <div class="faq-card">
+          <h3>What payment methods do you accept?</h3>
+          <p>We accept all major credit and debit cards through our payment processor, <a href="https://dodopayments.com" target="_blank" rel="noopener">DodoPayments</a>.</p>
+        </div>
+        <div class="faq-card">
+          <h3>What's the refund policy?</h3>
+          <p>All new subscriptions include a 30-day money-back guarantee. If you're not satisfied, contact us for a full refund.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Do you store any of my data?</h3>
+          <p>No. Drizby connects directly to your databases and queries pass through the server in real time. We never copy, cache, or store your data. Your databases stay exactly where they are.</p>
+        </div>
+        <div class="faq-card">
+          <h3>Where does Drizby Cloud run?</h3>
+          <p>Drizby Cloud runs on <a href="https://upcloud.com" target="_blank" rel="noopener">UpCloud</a> infrastructure in the EU (Finland). Self-hosted data stays entirely on your infrastructure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Start Free on Drizby Cloud</a>
+        <a class="btn" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener">
+          <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Self-Host Free
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .pricing-page {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem 0;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-desc {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    text-align: center;
+    background: linear-gradient(135deg, var(--text) 0%, var(--accent-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Plans */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .plan-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .plan-card:hover { border-color: var(--accent); }
+
+  .plan-card-featured {
+    border-color: rgba(99, 102, 241, 0.4);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(99, 102, 241, 0.05) 100%);
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: -0.65rem;
+    right: 1.5rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+
+  .plan-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .plan-header h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .plan-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+  .plan-price-detail {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    flex: 1;
+  }
+  .plan-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .plan-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .plan-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+    text-align: center;
+  }
+  .plan-btn:hover { border-color: var(--accent); color: var(--text); }
+  .plan-btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .plan-btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: #fff;
+  }
+  .gh-icon { width: 1em; height: 1em; }
+
+  /* Cost calculator */
+  .cost-section {
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cost-subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .cost-subtitle strong { color: var(--text); }
+
+  .cost-table-wrapper {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .cost-table th {
+    text-align: right;
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .cost-table th:first-child { text-align: left; }
+  .cost-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+  }
+  .cost-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .cost-table tbody tr:last-child td { border-bottom: none; }
+  .cost-highlight { font-weight: 600; color: var(--text); }
+
+  .cost-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* Why section */
+  .why-section {
+    margin-bottom: 4rem;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .why-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .why-card:hover { border-color: var(--accent); }
+  .why-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .why-card p { color: var(--muted); line-height: 1.6; font-size: 0.9rem; }
+
+  /* FAQ */
+  .faq-section {
+    margin-bottom: 4rem;
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .faq-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .faq-card:hover { border-color: var(--accent); }
+  .faq-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .faq-card p { color: var(--muted); line-height: 1.6; font-size: 0.9rem; }
+  .faq-card a { color: var(--accent); }
+  .faq-card a:hover { color: var(--accent-hover); }
+
+  /* CTA */
+  .cta-section { text-align: center; }
+  .cta-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--text); }
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .plans-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+</style>
