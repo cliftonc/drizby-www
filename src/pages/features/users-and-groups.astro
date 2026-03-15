@@ -26,6 +26,48 @@ import Layout from '../../layouts/Layout.astro';
     </section>
 
     <section class="content-section">
+      <h2 class="section-title">Authentication</h2>
+      <p class="section-desc">Multiple sign-in methods out of the box. Enable one or combine them to suit your team.</p>
+      <div class="auth-providers">
+        <div class="auth-provider">
+          <img class="auth-logo" src="/images/auth-logos/password.svg" alt="Password" />
+          <h3>Password</h3>
+          <p>Email &amp; password with admin approval for new registrations.</p>
+        </div>
+        <div class="auth-provider">
+          <img class="auth-logo" src="/images/auth-logos/magic-link.svg" alt="Magic Link" />
+          <h3>Magic Link</h3>
+          <p>Passwordless sign-in via one-time email link.</p>
+        </div>
+        <div class="auth-provider">
+          <img class="auth-logo" src="/images/auth-logos/google.svg" alt="Google" />
+          <h3>Google</h3>
+          <p>Google Workspace and personal accounts via OAuth.</p>
+        </div>
+        <div class="auth-provider">
+          <img class="auth-logo" src="/images/auth-logos/github.svg" alt="GitHub" />
+          <h3>GitHub</h3>
+          <p>Sign in with GitHub accounts. Great for developer teams.</p>
+        </div>
+        <div class="auth-provider">
+          <img class="auth-logo" src="/images/auth-logos/gitlab.svg" alt="GitLab" />
+          <h3>GitLab</h3>
+          <p>GitLab OAuth with PKCE for self-managed and SaaS instances.</p>
+        </div>
+        <div class="auth-provider">
+          <img class="auth-logo" src="/images/auth-logos/microsoft.svg" alt="Microsoft" />
+          <h3>Microsoft</h3>
+          <p>Azure AD / Entra ID with PKCE. Supports single and multi-tenant.</p>
+        </div>
+        <div class="auth-provider">
+          <img class="auth-logo" src="/images/auth-logos/slack.svg" alt="Slack" />
+          <h3>Slack</h3>
+          <p>Slack OpenID Connect for teams already on Slack.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
       <div class="card card-highlight">
         <h2>No Per-User Limits</h2>
         <p>In a world where AI agents query data alongside humans, per-seat pricing doesn't make sense. Drizby treats every user the same &mdash; whether they're a person on your team or an AI assistant connecting via MCP. Self-hosted instances have zero user limits by design. Drizby Cloud charges based on running instance minutes, not the number of users or connected agents.</p>
@@ -66,12 +108,12 @@ import Layout from '../../layouts/Layout.astro';
       <h2 class="section-title">Built for Teams</h2>
       <div class="features-grid">
         <div class="card">
-          <h3>SSO & OAuth <span class="badge">Coming Soon</span></h3>
-          <p>Google OAuth, Active Directory, and SAML integration are on the roadmap. <a href="https://github.com/cliftonc/drizby/issues" target="_blank" rel="noopener">Open an issue</a> to request your preferred provider or upvote existing requests.</p>
-        </div>
-        <div class="card">
           <h3>Admin Approval</h3>
           <p>New user registrations require admin approval, so you control who joins your instance. Pending users can't access any data until approved.</p>
+        </div>
+        <div class="card">
+          <h3>Auto-Accept Domains</h3>
+          <p>Configure trusted email domains so users from your organisation are automatically approved as members when they sign in via OAuth or magic link.</p>
         </div>
         <div class="card">
           <h3>Tenant Isolation</h3>
@@ -79,7 +121,7 @@ import Layout from '../../layouts/Layout.astro';
         </div>
         <div class="card">
           <h3>Session Security</h3>
-          <p>Secure session-based authentication with HTTP-only cookies. Sessions auto-expire to limit exposure.</p>
+          <p>Secure session-based authentication with HTTP-only cookies. Sessions auto-expire to limit exposure. Optional encryption at rest for stored secrets.</p>
         </div>
       </div>
     </section>
@@ -292,9 +334,48 @@ import Layout from '../../layouts/Layout.astro';
   }
   .gh-icon { width: 1em; height: 1em; }
 
+  .section-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .auth-providers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .auth-provider {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .auth-provider:hover { border-color: var(--accent); }
+  .auth-provider h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+  .auth-provider p {
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .auth-logo {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0.75rem;
+  }
+
   @media (max-width: 768px) {
     .hero h1 { font-size: 2rem; }
     .features-grid { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
+    .auth-providers { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
   }
 </style>

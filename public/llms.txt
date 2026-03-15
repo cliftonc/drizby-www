@@ -107,4 +107,4 @@ Yes. Drizby covers similar ground to Superset — dashboards, charts, and multi-
 
 ## Company
 
-Drizby is operated by Guidemode Limited, a company registered in England and Wales (company number 16839248). Contact: hello@guidemode.dev
+Drizby is operated by Guidemode Limited, a company registered in England and Wales (company number 16839248). Contact: drizby@guidemode.dev
