@@ -17,10 +17,12 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="security-grid">
           <div class="security-card">
-            <div class="security-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <div class="security-card-header">
+              <div class="security-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              </div>
+              <h3>Authentication</h3>
             </div>
-            <h3>Authentication</h3>
             <ul>
               <li>Email and password authentication with secure hashing</li>
               <li>Session-based authentication with secure cookie management</li>
@@ -28,10 +30,12 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="security-card">
-            <div class="security-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="security-card-header">
+              <div class="security-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3>Access Controls</h3>
             </div>
-            <h3>Access Controls</h3>
             <ul>
               <li>Role-based access control (RBAC) with admin and member roles</li>
               <li>CASL-based fine-grained permissions</li>
@@ -41,10 +45,12 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="security-card">
-            <div class="security-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+            <div class="security-card-header">
+              <div class="security-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+              </div>
+              <h3>Application Security</h3>
             </div>
-            <h3>Application Security</h3>
             <ul>
               <li>Secure session cookies with HttpOnly, Secure, and SameSite attributes</li>
               <li>Security headers including HSTS and Content Security Policy (CSP)</li>
@@ -53,10 +59,12 @@ import Layout from '../layouts/Layout.astro';
           </div>
 
           <div class="security-card">
-            <div class="security-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div class="security-card-header">
+              <div class="security-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3>Incident Response</h3>
             </div>
-            <h3>Incident Response</h3>
             <ul>
               <li>Data breach notification to supervisory authorities within 72 hours</li>
               <li>Prompt notification to affected individuals for high-risk breaches</li>
@@ -70,9 +78,24 @@ import Layout from '../layouts/Layout.astro';
       <section class="legal-section">
         <h2>Data Handling</h2>
 
+        <div class="legal-card highlight-card">
+          <h3>We never store your data</h3>
+          <p>Drizby connects directly to your databases and all queries pass through in real time. We <strong>never</strong> copy, cache, or store raw data from your database connections. The only data Drizby stores is its own application state: dashboard configurations, saved notebook queries and AI commentary, and user/group/team data. Notebooks store the queries themselves and may include summarised data in AI-generated markdown commentary, but never store raw query results. Your business data stays in your database at all times.</p>
+        </div>
+
+        <div class="legal-card">
+          <h3>Bring your own AI key</h3>
+          <p>AI features use your own API key for Claude, OpenAI, or Gemini. Queries go directly from your Drizby instance to your chosen AI provider. We never proxy, log, or have access to your AI interactions.</p>
+        </div>
+
+        <div class="legal-card">
+          <h3>Dedicated Cloud instances</h3>
+          <p>Every Drizby Cloud customer gets their own isolated instance. Your data is never shared, co-mingled, or accessible to other tenants. Each instance runs in its own container with its own storage.</p>
+        </div>
+
         <div class="legal-card">
           <h3>Encryption at Rest</h3>
-          <p>All data is encrypted at rest. Self-hosted deployments use SQLite with filesystem-level encryption as configured by the operator. Drizby Cloud runs on UpCloud infrastructure with encrypted block storage.</p>
+          <p>Application data (dashboard configs, notebooks, user data) is encrypted at rest. Self-hosted deployments use SQLite with optional <code>ENCRYPTION_SECRET</code> for secrets and filesystem-level encryption as configured by the operator. Drizby Cloud runs on UpCloud infrastructure with encrypted block storage.</p>
         </div>
 
         <div class="legal-card">
@@ -261,6 +284,19 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: 1rem;
   }
 
+  .highlight-card {
+    border-color: rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(99, 102, 241, 0.05) 100%);
+  }
+
+  .legal-card code {
+    font-size: 0.85em;
+    background: rgba(99, 102, 241, 0.1);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    color: var(--accent-hover);
+  }
+
   .legal-card p {
     margin-bottom: 0.25rem;
   }
@@ -289,28 +325,35 @@ import Layout from '../layouts/Layout.astro';
     padding: 1.5rem;
   }
 
+  .security-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
   .security-card-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(99, 102, 241, 0.1);
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    border-radius: 6px;
     color: var(--accent);
+    flex-shrink: 0;
   }
 
   .security-card-icon svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.1rem;
+    height: 1.1rem;
   }
 
   .security-card h3 {
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 0.75rem;
+    margin: 0;
   }
 
   .security-card ul {
