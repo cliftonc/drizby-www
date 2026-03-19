@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.drizby.com/sitemap-index.xml
+Sitemap: https://www.drizby.com/docs/sitemap-index.xml

@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 
 const steps = [
-  { num: '1', title: 'Connect', desc: 'Point Drizby at your database. PostgreSQL, MySQL, SQLite, SingleStore, DuckDB — if Drizzle ORM supports it, so does Drizby.' },
-  { num: '2', title: 'Explore', desc: 'Ask questions in plain English, build dashboards visually, or define a semantic layer in code. AI notebooks and a no-code builder included.' },
-  { num: '3', title: 'Share', desc: 'Invite your team — unlimited users, no per-seat pricing. Role-based access and group visibility keep things secure.' },
+  { num: '1', title: 'Connect', desc: 'Point Drizby at your database. PostgreSQL, MySQL, SQLite, Snowflake, SingleStore, Databend, DuckDB — if Drizzle ORM supports it, so does Drizby.' },
+  { num: '2', title: 'Introspect', desc: 'Pull and define your schema via drizzle-kit, then use AI to generate semantic cubes that define your business dimensions and measures.' },
+  { num: '3', title: 'Explore', desc: 'Ask questions in plain English, build dashboards visually, and share with your team — unlimited users, no per-seat pricing. Role-based access keeps things secure.' },
 ];
 
 const features = [
@@ -52,6 +52,14 @@ const databases = [
     ],
   },
   {
+    category: 'Snowflake',
+    color: '#29b5e8',
+    providers: [
+      { name: 'Databend', logo: '/images/db-logos/databend.png', url: 'https://www.databend.com' },
+      { name: 'Snowflake', logo: '/images/db-logos/snowflake.png', url: 'https://www.snowflake.com' },
+    ],
+  },
+  {
     category: 'DuckDB',
     color: '#fff000',
     providers: [
@@ -60,11 +68,28 @@ const databases = [
   },
 ];
 
+const heroDBs = [
+  { name: 'PostgreSQL', logo: '/images/db-logos/postgresql.png' },
+  { name: 'MySQL', logo: '/images/db-logos/mysql.png' },
+  { name: 'SQLite', logo: '/images/db-logos/sqlite.png' },
+  { name: 'Snowflake', logo: '/images/db-logos/snowflake.png' },
+  { name: 'DuckDB', logo: '/images/db-logos/duckdb.png' },
+  { name: 'SingleStore', logo: '/images/db-logos/singlestore.png' },
+  { name: 'Databend', logo: '/images/db-logos/databend.png' },
+  { name: 'Neon', logo: '/images/db-logos/neon.png' },
+  { name: 'Supabase', logo: '/images/db-logos/supabase.png' },
+  { name: 'Turso', logo: '/images/db-logos/turso.png' },
+  { name: 'PlanetScale', logo: '/images/db-logos/planetscale.png' },
+  { name: 'PGlite', logo: '/images/db-logos/pglite.png' },
+  { name: 'TiDB', logo: '/images/db-logos/tidb.png' },
+  { name: 'AWS Aurora', logo: '/images/db-logos/aws.png' },
+];
+
 const faqs = [
   { q: 'What is Drizby?', a: 'Drizby is an open-source AI analytics platform powered by drizzle-cube. It provides dashboards, agentic AI notebooks, a visual analysis builder, and a full semantic layer — all in a single self-hostable application.' },
   { q: 'Is Drizby free?', a: 'Yes. Drizby is MIT licensed and free to self-host with unlimited users, dashboards, and notebooks. Drizby Cloud is a paid managed hosting option with usage-based pricing.' },
   { q: 'Do you store any of my data?', a: 'No. Drizby connects directly to your databases and queries pass through in real time. We never copy, cache, or store your data.' },
-  { q: 'What databases does Drizby support?', a: 'Drizby supports PostgreSQL (including Neon, Supabase, and AWS Aurora), MySQL (including PlanetScale and TiDB), SQLite (including Turso), SingleStore, and DuckDB — any database supported by Drizzle ORM.' },
+  { q: 'What databases does Drizby support?', a: 'Drizby supports PostgreSQL (including Neon, Supabase, and AWS Aurora), MySQL (including PlanetScale and TiDB), SQLite (including Turso), Snowflake, SingleStore, Databend, and DuckDB — any database supported by Drizzle ORM.' },
   { q: 'What is the semantic layer?', a: 'The semantic layer is powered by drizzle-cube. It lets you define metrics, dimensions, and measures once and access them everywhere — dashboards, APIs, AI agents, and MCP clients. It enforces consistent definitions and security context across all queries.' },
   { q: 'Can AI assistants query my data?', a: 'Yes. Drizby includes an MCP (Model Context Protocol) server with OAuth 2.1 authentication. AI assistants like Claude, VS Code Copilot, and Cursor can query your semantic layer directly with per-user security context.' },
 ];
@@ -113,8 +138,19 @@ const ogImage = `${url}/images/drizby_2.png`;
       <h1>Your data, one question away</h1>
       <p class="subtitle">Connect your database and start exploring with AI-powered notebooks, drag-and-drop dashboards, and a full semantic layer. Open source. Self-host free. Unlimited users.</p>
       <div class="hero-buttons">
-        <a class="btn btn-primary" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Try Drizby Cloud <span class="btn-sub">free during launch</span></a>
-        <a class="btn" href="#self-host">Self-Host Free</a>
+        <a class="btn btn-primary btn-lg" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Try Drizby Cloud <span class="btn-sub">free during launch</span></a>
+        <a class="btn btn-outline btn-lg" href="#self-host">Self-Host Free <span class="btn-sub">MIT licensed</span></a>
+      </div>
+      <div class="hero-dbs">
+        <p class="hero-dbs-label">Works with</p>
+        <div class="hero-dbs-grid">
+          {heroDBs.map(({ name, logo }) => (
+            <div class="hero-db" title={name}>
+              <img src={logo} alt={`${name} logo`} loading="eager" />
+              <span class="hero-db-name">{name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </header>
@@ -222,10 +258,10 @@ const ogImage = `${url}/images/drizby_2.png`;
               <h3>{category}</h3>
             </div>
             <div class="db-providers">
-              {providers.map(({ name, logo, url }) => (
-                <a href={url} target="_blank" rel="noopener" class="db-provider">
+              {providers.map(({ name, logo, url, comingSoon }) => (
+                <a href={url} target="_blank" rel="noopener" class={`db-provider${comingSoon ? ' coming-soon' : ''}`}>
                   <img src={logo} alt={`${name} logo`} class="db-logo" loading="lazy" />
-                  <span class="db-name">{name}</span>
+                  <span class="db-name">{name}{comingSoon && <span class="coming-soon-badge">coming soon</span>}</span>
                 </a>
               ))}
             </div>
@@ -325,6 +361,58 @@ const ogImage = `${url}/images/drizby_2.png`;
     flex-wrap: wrap;
   }
 
+  /* Hero database icons */
+  .hero-dbs {
+    margin-top: 2.5rem;
+  }
+  .hero-dbs-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .hero-dbs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .hero-db {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    transition: background 0.15s, transform 0.15s;
+    cursor: default;
+  }
+  .hero-db:hover {
+    background: var(--surface);
+    transform: translateY(-2px);
+  }
+  .hero-db img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    object-fit: contain;
+  }
+  .hero-db-name {
+    font-size: 0.65rem;
+    color: var(--muted);
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+  }
+  .hero-db:hover .hero-db-name {
+    opacity: 1;
+  }
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -339,18 +427,33 @@ const ogImage = `${url}/images/drizby_2.png`;
   }
   .btn:hover { border-color: var(--accent); color: var(--text); }
 
+  .btn-lg {
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+
   .btn-primary {
     background: var(--accent);
     border-color: var(--accent);
     color: #fff;
-    flex-direction: column;
-    line-height: 1.3;
   }
   .btn-primary:hover {
     background: var(--accent-hover);
     border-color: var(--accent-hover);
     color: #fff;
   }
+  .btn-outline {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .btn-outline:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--accent-hover);
+    color: var(--accent-hover);
+  }
+
   .btn-sub {
     font-size: 0.7rem;
     font-weight: 400;
@@ -747,6 +850,16 @@ const ogImage = `${url}/images/drizby_2.png`;
     font-size: 0.85rem;
     font-weight: 500;
   }
+  .db-provider.coming-soon {
+    opacity: 0.55;
+  }
+  .coming-soon-badge {
+    font-size: 0.65rem;
+    font-weight: 400;
+    color: var(--text-muted, #888);
+    margin-left: 0.4rem;
+    font-style: italic;
+  }
 
   /* Open source */
   .open-source {
@@ -846,6 +959,9 @@ const ogImage = `${url}/images/drizby_2.png`;
     .steps-flow { flex-direction: column; align-items: center; }
     .step { max-width: 100%; }
     .step-arrow { transform: rotate(90deg); padding: 0.5rem 0; }
+    .hero-dbs-grid { max-width: 320px; }
+    .hero-db img { width: 26px; height: 26px; }
+    .hero-db-name { opacity: 1; }
     .feature-row { grid-template-columns: 1fr; gap: 1.5rem; }
     .feature-row-reverse { direction: ltr; }
     .privacy-grid { grid-template-columns: 1fr; }
