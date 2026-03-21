@@ -189,6 +189,8 @@ const currentPath = Astro.url.pathname;
     --surface: #1a1d27;
     --surface-alt: #141720;
     --border: #2a2d3a;
+    --iso-grid-url: url('/iso-grid-light.svg');
+    --iso-grid-opacity: 0.05;
     --text: #e1e4eb;
     --muted: #8b8fa3;
     --accent: #0891b2;
@@ -204,6 +206,8 @@ const currentPath = Astro.url.pathname;
     --surface: #ffffff;
     --surface-alt: #f1f3f8;
     --border: #e2e4ea;
+    --iso-grid-url: url('/iso-grid-teal.svg');
+    --iso-grid-opacity: 0.07;
     --text: #1a1d27;
     --muted: #6b7084;
     --accent: #0891b2;
@@ -220,6 +224,27 @@ const currentPath = Astro.url.pathname;
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--bg);
     color: var(--text);
+  }
+
+  body {
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: var(--iso-grid-url);
+    background-size: 400px;
+    background-repeat: repeat;
+    opacity: var(--iso-grid-opacity);
+  }
+
+  body > * {
+    position: relative;
+    z-index: 1;
   }
 
   code, pre, .font-mono {

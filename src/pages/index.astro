@@ -324,12 +324,12 @@ const ogImage = `${url}/images/drizby_3.png`;
      HERO — Split layout, left-aligned
      ============================================ */
   .hero {
-    padding: 5rem 1.5rem 0;
-    background: var(--bg);
+    padding: 5rem 0 0;
   }
   .hero-inner {
     max-width: 1150px;
     margin: 0 auto;
+    padding: 0 1.5rem;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 3rem;
@@ -472,13 +472,14 @@ const ogImage = `${url}/images/drizby_3.png`;
     color: #fff;
   }
   .btn-outline {
-    border-color: var(--accent);
-    color: var(--accent);
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text);
   }
   .btn-outline:hover {
-    background: var(--accent-tint);
-    border-color: var(--accent-hover);
-    color: var(--accent-hover);
+    background: var(--surface-alt);
+    border-color: var(--muted);
+    color: var(--text);
   }
   .btn-sub {
     font-size: 0.65rem;
