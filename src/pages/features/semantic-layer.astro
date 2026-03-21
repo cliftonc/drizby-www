@@ -20,9 +20,23 @@ import Layout from '../../layouts/Layout.astro';
   <main class="feature-page">
     <a href="/" class="breadcrumb">&larr; Back to Home</a>
 
-    <section class="hero">
-      <h1>Semantic Layer</h1>
-      <p class="hero-desc">Define your metrics once. Query them everywhere.</p>
+    <section class="hero hero-img-right">
+      <div class="hero-content">
+        <h1>Semantic Layer</h1>
+        <p class="hero-desc">Define your metrics once. Query them everywhere — dashboards, APIs, or AI agents. Powered by drizzle-cube.</p>
+        <ul class="hero-highlights">
+          <li>Code-first cubes built on your existing Drizzle ORM schemas</li>
+          <li>AI-assisted cube generation from database introspection</li>
+          <li>Consistent metric definitions across every query surface</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Try Drizby Cloud</a>
+          <a class="btn" href="https://try.drizzle-cube.dev" target="_blank" rel="noopener">Try Drizzle-Cube Playground</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="/images/drizby-cubes.png" alt="Semantic layer cubes" loading="eager" />
+      </div>
     </section>
 
     <section class="content-section">
@@ -140,27 +154,73 @@ import Layout from '../../layouts/Layout.astro';
   .breadcrumb:hover { color: var(--accent-hover); }
 
   .hero {
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
     margin-bottom: 3rem;
     padding: 3rem 0;
   }
+  .hero-img-left {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-content {
+    text-align: left;
+  }
   .hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg, var(--text) 0%, var(--accent-hover) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: var(--text);
   }
   .hero-desc {
     margin-top: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     color: var(--muted);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 480px;
+    line-height: 1.65;
+  }
+  .hero-highlights {
+    margin-top: 1.25rem;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .hero-highlights li {
+    font-size: 0.85rem;
+    color: var(--muted);
     line-height: 1.5;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .hero-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero-cta {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .hero-visual {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.2);
+  }
+  .hero-visual img {
+    width: 100%;
+    display: block;
   }
 
   .content-section {
@@ -172,10 +232,7 @@ import Layout from '../../layouts/Layout.astro';
     font-weight: 700;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--text) 0%, var(--accent-hover) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text);
   }
 
   .card {
@@ -242,7 +299,7 @@ import Layout from '../../layouts/Layout.astro';
   }
   .screenshot-container figure:hover {
     border-color: var(--accent);
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 30px rgba(8, 145, 178, 0.1);
   }
   .screenshot-container img { width: 100%; display: block; }
   .screenshot-container figcaption {
@@ -286,6 +343,21 @@ import Layout from '../../layouts/Layout.astro';
   .gh-icon { width: 1em; height: 1em; }
 
   @media (max-width: 768px) {
+    .hero, .hero-img-left {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .hero-img-left .hero-visual {
+      order: -1;
+    }
+    .hero-content {
+      text-align: center;
+    }
+    .hero-highlights {
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .hero h1 { font-size: 2rem; }
     .features-grid { grid-template-columns: 1fr; }
   }

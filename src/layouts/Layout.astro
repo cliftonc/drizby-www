@@ -6,7 +6,7 @@ interface Props {
   canonicalPath?: string;
 }
 
-const { title, description = 'Open-source BI platform powered by drizzle-cube. Self-service analytics, AI agentic notebooks, and a full semantic layer — self-host or deploy instantly on Drizby Cloud.', ogImage = 'https://www.drizby.com/images/drizby_2.png', canonicalPath = '' } = Astro.props;
+const { title, description = 'Open-source BI platform powered by drizzle-cube. Self-service analytics, AI agentic notebooks, and a full semantic layer — self-host or deploy instantly on Drizby Cloud.', ogImage = 'https://www.drizby.com/images/drizby_3.png', canonicalPath = '' } = Astro.props;
 const url = 'https://www.drizby.com';
 const canonical = `${url}${canonicalPath}`;
 const currentPath = Astro.url.pathname;
@@ -16,6 +16,9 @@ const currentPath = Astro.url.pathname;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/png" sizes="512x512" href="/logo.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/logo.png" />
@@ -48,7 +51,7 @@ const currentPath = Astro.url.pathname;
     <nav class="top-nav">
       <div class="nav-inner">
         <a href="/" class="nav-brand">
-          <img src="/logo.png" alt="Drizby logo" class="nav-logo" />
+          <img src="/images/cloud-logo.png" alt="Drizby logo" class="nav-logo" />
           <span class="nav-title">Drizby</span>
         </a>
         <button class="mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -143,7 +146,7 @@ const currentPath = Astro.url.pathname;
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="/" class="footer-logo-link">
-              <img src="/logo.png" alt="Drizby" class="footer-logo" />
+              <img src="/images/cloud-logo.png" alt="Drizby" class="footer-logo" />
               <span>Drizby</span>
             </a>
             <p class="footer-tagline">Open-source BI platform powered by <a href="https://github.com/cliftonc/drizzle-cube">drizzle-cube</a></p>
@@ -184,37 +187,43 @@ const currentPath = Astro.url.pathname;
   :root {
     --bg: #0f1117;
     --surface: #1a1d27;
+    --surface-alt: #141720;
     --border: #2a2d3a;
     --text: #e1e4eb;
     --muted: #8b8fa3;
-    --accent: #6366f1;
-    --accent-hover: #818cf8;
-    --nav-bg: rgba(15, 17, 23, 0.85);
+    --accent: #0891b2;
+    --accent-hover: #06b6d4;
+    --nav-bg: rgba(15, 17, 23, 0.9);
     --shadow-drop: rgba(0, 0, 0, 0.3);
-    --accent-tint: rgba(99, 102, 241, 0.08);
-    --accent-tint-strong: rgba(99, 102, 241, 0.1);
+    --accent-tint: rgba(8, 145, 178, 0.08);
+    --accent-tint-strong: rgba(8, 145, 178, 0.12);
   }
 
   [data-theme="light"] {
     --bg: #f8f9fc;
     --surface: #ffffff;
+    --surface-alt: #f1f3f8;
     --border: #e2e4ea;
     --text: #1a1d27;
     --muted: #6b7084;
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
-    --nav-bg: rgba(248, 249, 252, 0.85);
+    --accent: #0891b2;
+    --accent-hover: #0e7490;
+    --nav-bg: rgba(248, 249, 252, 0.9);
     --shadow-drop: rgba(0, 0, 0, 0.08);
-    --accent-tint: rgba(99, 102, 241, 0.06);
-    --accent-tint-strong: rgba(99, 102, 241, 0.08);
+    --accent-tint: rgba(8, 145, 178, 0.06);
+    --accent-tint-strong: rgba(8, 145, 178, 0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--bg);
     color: var(--text);
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   }
 
   a { color: var(--accent); text-decoration: none; }
@@ -248,14 +257,12 @@ const currentPath = Astro.url.pathname;
     color: var(--text);
   }
   .nav-brand:hover { color: var(--text); }
-  .nav-logo { height: 1.75rem; width: auto; filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.3)); }
+  .nav-logo { height: 1.75rem; width: auto; filter: drop-shadow(0 0 8px rgba(8, 145, 178, 0.3)); }
   .nav-title {
     font-size: 1.2rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--text) 0%, var(--accent-hover) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text);
+    letter-spacing: -0.02em;
   }
   .nav-links {
     display: flex;
