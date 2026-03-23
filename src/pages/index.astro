@@ -178,6 +178,24 @@ const ogImage = `${url}/images/drizby_3.png`;
       </div>
     </section>
 
+    <!-- Quickstart video -->
+    <section class="video-section">
+      <div class="video-container" id="yt-facade">
+        <img
+          src="https://i.ytimg.com/vi/vv9IYUVit9I/sddefault.jpg"
+          alt="Watch: Drizby Quickstart"
+          class="video-thumb"
+          loading="lazy"
+        />
+        <button class="video-play" aria-label="Play video">
+          <svg width="68" height="48" viewBox="0 0 68 48">
+            <path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/>
+            <path d="M 45,24 27,14 27,34" fill="white"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
     <!-- Features -->
     <section class="features">
       <h2 class="section-title">Everything you need to understand your data</h2>
@@ -553,6 +571,55 @@ const ogImage = `${url}/images/drizby_3.png`;
     color: var(--muted);
     font-size: 0.85rem;
     line-height: 1.6;
+  }
+
+  /* ============================================
+     VIDEO — YouTube facade with click-to-play
+     ============================================ */
+  .video-section {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
+  .video-container {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #000;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  }
+  .video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s;
+  }
+  .video-container:hover .video-thumb {
+    opacity: 0.85;
+  }
+  .video-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.15s;
+  }
+  .video-container:hover .video-play {
+    transform: scale(1.08);
+  }
+  .video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
   /* ============================================
@@ -1037,3 +1104,9 @@ const ogImage = `${url}/images/drizby_3.png`;
     }
   }
 </style>
+
+<script>
+  document.getElementById('yt-facade')?.addEventListener('click', function () {
+    this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/vv9IYUVit9I?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>';
+  });
+</script>
