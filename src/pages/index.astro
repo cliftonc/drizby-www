@@ -164,7 +164,7 @@ const ogImage = `${url}/images/drizby_3.png`;
   <main>
     <!-- How it works -->
     <section class="steps">
-      <h2 class="section-title">Up and running in 60 seconds</h2>
+      <h2 class="section-title">Up and running in 2 minutes</h2>
       <div class="steps-flow">
         {steps.map(({ num, title, desc }, i) => (
           <div class="step">
@@ -1070,9 +1070,25 @@ const ogImage = `${url}/images/drizby_3.png`;
     h1 { font-size: 2.5rem; }
     .hero { padding: 3rem 1rem 0; }
     .steps-flow { grid-template-columns: 1fr; }
-    .hero-dbs-grid { max-width: 320px; }
-    .hero-db img { width: 24px; height: 24px; }
-    .hero-db-name { opacity: 1; font-size: 0.55rem; }
+    .section-title { font-size: 1.3rem; margin-bottom: 1rem; }
+    .steps { padding: 1.5rem 0; margin-bottom: 0; }
+    .video-section { margin-bottom: 1.5rem; }
+    .features { padding: 1.5rem 0; margin-bottom: 0; }
+    .features-list { gap: 2rem; }
+    .feature-text h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .feature-text p { font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .get-started { padding: 1.5rem 0; margin-bottom: 0; }
+    .databases { padding: 1.5rem 0; margin-bottom: 0; }
+    .privacy { padding: 1.5rem 0; margin-bottom: 0; }
+    .self-host { padding: 1.5rem 0; }
+    .open-source { padding: 1.5rem 0; margin-bottom: 0; }
+    .faq { padding: 1.5rem 0 0; margin-bottom: 1rem; }
+    .final-cta { padding: 1.5rem 1.5rem 1.5rem; margin-top: 0.5rem; }
+    .hero-dbs { margin-top: 1rem; padding-bottom: 1rem; }
+    .hero-dbs-grid { max-width: 320px; flex-wrap: wrap; gap: 0.25rem; }
+    .hero-db img { width: 22px; height: 22px; }
+    .hero-db { padding: 0.3rem 0.4rem; }
+    .hero-db-name { opacity: 1; font-size: 0.5rem; }
     .feature-row,
     .feature-row-normal,
     .feature-row-flipped {
