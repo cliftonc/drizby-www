@@ -12,6 +12,7 @@ const features = [
   { title: 'Dashboards & Charts', desc: 'Drag-and-drop grid dashboards with bar, line, area, pie, scatter, KPI cards, and data tables. No code required.', href: '/features/dashboards', img: '/images/drizby_2.png', alt: 'Drag-and-drop dashboards' },
   { title: 'Semantic Layer', desc: 'Define metrics once with your existing Drizzle schemas. Access them everywhere — dashboards, APIs, or AI agents.', href: '/features/semantic-layer', img: '/images/drizby_5.png', alt: 'Semantic layer editor' },
   { title: 'AI Agent Ready', desc: 'Expose your data to Claude, Copilot, and Cursor through the Model Context Protocol with OAuth 2.1 authentication.', href: '/features/mcp-server', img: '/images/drizby_1.png', alt: 'MCP server for AI agents' },
+  { title: 'GitHub Integration', desc: 'Version-control your schemas, cubes, and dashboards. Push to GitHub, tag releases, and restore from any version.', href: '/features/github-integration', img: '/images/drizby_github.png', alt: 'GitHub sync with push progress' },
   { title: 'Unlimited Users', desc: 'No per-seat pricing. Role-based access, group visibility, and 7 authentication methods including Google, GitHub, GitLab, Microsoft, and Slack.', href: '/features/users-and-groups', img: '/images/drizby_groups.png', alt: 'Users and groups management' },
 ];
 
@@ -98,6 +99,9 @@ const alternatives = [
   { q: 'Is Drizby an alternative to Hex?', a: 'Yes. Like Hex, Drizby offers AI-powered notebooks for data exploration. Unlike Hex, Drizby is open source, self-hostable, includes a full semantic layer, and has no per-seat pricing. You also keep full control of your data — Drizby connects directly to your databases without copying or storing anything.' },
   { q: 'Is Drizby an alternative to Metabase?', a: 'Yes. Drizby provides dashboards, a visual query builder, and multi-database support like Metabase. Drizby adds agentic AI notebooks, a code-first semantic layer powered by drizzle-cube, an MCP server for AI assistants, and native TypeScript/Drizzle ORM integration.' },
   { q: 'Is Drizby an alternative to Apache Superset?', a: 'Yes. Drizby covers similar ground to Superset — dashboards, charts, and multi-database connectivity. Drizby is lighter weight, ships as a single Docker container, includes AI notebooks and an MCP server out of the box, and uses a TypeScript semantic layer instead of SQL-based metrics.' },
+  { q: 'Is Drizby an alternative to Looker?', a: 'Yes. Like Looker, Drizby has a semantic layer at its core — but defined in TypeScript with Drizzle ORM instead of LookML. Drizby is open source, self-hostable, and includes AI notebooks and an MCP server. No per-seat licensing, no vendor lock-in, and your semantic layer is version-controlled via GitHub.' },
+  { q: 'Is Drizby an alternative to Power BI?', a: 'Yes. Drizby provides interactive dashboards, a visual analysis builder, and multi-database connectivity like Power BI. Drizby runs anywhere — self-hosted or cloud — with no Microsoft ecosystem dependency. It adds agentic AI notebooks, a code-first semantic layer, and an MCP server for AI assistants.' },
+  { q: 'Is Drizby an alternative to Tableau?', a: 'Yes. Drizby offers drag-and-drop dashboards and data exploration like Tableau. Unlike Tableau, Drizby is open source with unlimited users and no per-seat costs. It includes a TypeScript semantic layer, AI-powered notebooks for natural language querying, and GitHub integration for version-controlling your analytics.' },
 ];
 
 const pageTitle = 'Drizby - Open-source AI Analytics powered by drizzle-cube';
@@ -137,7 +141,7 @@ const ogImage = `${url}/images/drizby_3.png`;
     <div class="hero-inner">
       <div class="hero-content">
         <p class="hero-eyebrow">Open-source BI platform</p>
-        <h1>Your data,<br/>one question away</h1>
+        <h1>From data to <span class="accent-word">insight</span>,<br/>one question away</h1>
         <p class="subtitle">Connect your database and start exploring with AI-powered notebooks, drag-and-drop dashboards, and a full semantic layer. Unlimited users. No per-seat pricing.</p>
         <div class="hero-buttons">
           <a class="btn btn-primary btn-lg" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Try Drizby Cloud <span class="btn-sub">7 days free</span></a>
@@ -338,6 +342,10 @@ const ogImage = `${url}/images/drizby_3.png`;
 </Layout>
 
 <style>
+  .accent-word {
+    color: var(--accent);
+  }
+
   /* ============================================
      HERO — Split layout, left-aligned
      ============================================ */
@@ -365,11 +373,12 @@ const ogImage = `${url}/images/drizby_3.png`;
     margin-bottom: 1rem;
   }
   h1 {
-    font-size: 3.25rem;
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
     font-weight: 800;
     letter-spacing: -0.035em;
     line-height: 1.05;
     color: var(--text);
+    white-space: nowrap;
   }
   .subtitle {
     margin-top: 1.25rem;
@@ -1067,7 +1076,7 @@ const ogImage = `${url}/images/drizby_3.png`;
     .hero-buttons {
       justify-content: center;
     }
-    h1 { font-size: 2.5rem; }
+    h1 { font-size: 2rem; white-space: normal; }
     .hero { padding: 3rem 1rem 0; }
     .steps-flow { grid-template-columns: 1fr; }
     .section-title { font-size: 1.3rem; margin-bottom: 1rem; }

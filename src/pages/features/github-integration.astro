@@ -1,0 +1,384 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="GitHub Integration - Drizby"
+  description="Version-control your semantic layer. Push schemas, cubes, and dashboards to GitHub, tag releases with semver, and restore from any version."
+  ogImage="https://www.drizby.com/images/drizby_github.png"
+  canonicalPath="/features/github-integration"
+>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.drizby.com" },
+      { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://www.drizby.com/#features" },
+      { "@type": "ListItem", "position": 3, "name": "GitHub Integration", "item": "https://www.drizby.com/features/github-integration" }
+    ]
+  })} />
+  <main class="feature-page">
+    <a href="/" class="breadcrumb">&larr; Back to Home</a>
+
+    <section class="hero hero-img-left">
+      <div class="hero-visual">
+        <img src="/images/drizby_github.png" alt="Pushing schemas and cubes to GitHub from Drizby" loading="eager" />
+      </div>
+      <div class="hero-content">
+        <h1>GitHub Integration</h1>
+        <p class="hero-desc">Version-control your entire semantic layer. Push schemas, cubes, and dashboards to GitHub, tag releases, and restore from any version.</p>
+        <ul class="hero-highlights">
+          <li>Push schemas, cubes, and dashboard configs to any GitHub repo</li>
+          <li>Semver tagging with one-click major, minor, and patch releases</li>
+          <li>Restore from any tag to roll back changes instantly</li>
+          <li>Only changed files are uploaded — fast, incremental syncs</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Try Drizby Cloud — 7 Days Free</a>
+          <a class="btn" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener">Self-Host Free</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="card card-highlight">
+        <h2>Your Semantic Layer, Version-Controlled</h2>
+        <p>Drizby stores your schemas, cube definitions, and dashboard configurations in its internal database. With GitHub integration, every change you make can be pushed to a Git repository — giving you a full audit trail, branch-based workflows, and the ability to roll back to any previous state.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">How It Works</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Connect a GitHub App</h3>
+          <p>Create a GitHub App with repository write permissions, then paste the credentials into Drizby's settings. Install the app on your organisation or personal account.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Select a Repo & Branch</h3>
+          <p>Choose an existing repository or create a new one. Pick the branch your instance syncs to — use <code>main</code> for production, <code>development</code> for staging.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Push & Tag</h3>
+          <p>Hit Push in the semantic editor to sync your files. Only changed files are uploaded. Tag releases with semver — major, minor, or patch — with one click.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="features-grid">
+        <div class="card">
+          <h3>Incremental Sync</h3>
+          <p>Drizby computes git blob SHAs locally and compares them with the remote tree. Only files with actual content changes are uploaded — making syncs fast even with hundreds of files.</p>
+        </div>
+        <div class="card">
+          <h3>Clean Renames & Deletes</h3>
+          <p>Renamed or deleted files are handled automatically. Each sync builds a complete tree replacement for managed directories, so the repository always reflects the current state of your semantic layer.</p>
+        </div>
+        <div class="card">
+          <h3>Semver Tagging</h3>
+          <p>Create annotated git tags with one click. Choose between major, minor, and patch bumps. The latest tag is shown in the editor toolbar so you always know which version you're working from.</p>
+        </div>
+        <div class="card">
+          <h3>Restore from Any Version</h3>
+          <p>Browse previous tags and restore any version with a single click. Drizby pulls the files from GitHub and updates your schemas, cubes, and dashboards — a full point-in-time restore.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="card card-coming-soon">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <h2>Multi-Instance Workflows</h2>
+        <p>Different Drizby instances will sync to different branches of the same repository. Use one branch for development and another for production — with pull requests to promote changes through your normal Git workflow before reaching production dashboards.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">What Gets Synced</h2>
+      <div class="file-tree">
+        <div class="tree-line"><span class="tree-icon">&#128196;</span> README.md</div>
+        <div class="tree-line"><span class="tree-folder">&#128193;</span> schemas/</div>
+        <div class="tree-line tree-indent"><span class="tree-folder">&#128193;</span> my-connection/</div>
+        <div class="tree-line tree-indent-2"><span class="tree-file">.ts</span> employees.ts</div>
+        <div class="tree-line tree-indent-2"><span class="tree-file">.ts</span> orders.ts</div>
+        <div class="tree-line"><span class="tree-folder">&#128193;</span> cubes/</div>
+        <div class="tree-line tree-indent"><span class="tree-folder">&#128193;</span> my-connection/</div>
+        <div class="tree-line tree-indent-2"><span class="tree-file">.ts</span> revenue-cube.ts</div>
+        <div class="tree-line tree-indent-2"><span class="tree-file">.ts</span> user-activity-cube.ts</div>
+        <div class="tree-line"><span class="tree-folder">&#128193;</span> dashboards/</div>
+        <div class="tree-line tree-indent"><span class="tree-folder">&#128193;</span> my-connection/</div>
+        <div class="tree-line tree-indent-2"><span class="tree-file">.json</span> sales-overview.json</div>
+      </div>
+    </section>
+
+    <section class="content-section cta-section">
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener">
+          <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Get Started
+        </a>
+        <a class="btn" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Try Drizby Cloud — 7 Days Free</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .feature-page {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .breadcrumb {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    transition: color 0.15s;
+  }
+  .breadcrumb:hover { color: var(--accent-hover); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 3rem 0;
+  }
+  .hero-img-left {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-content {
+    text-align: left;
+  }
+  .hero h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  .hero-desc {
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.65;
+  }
+  .hero-highlights {
+    margin-top: 1.25rem;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .hero-highlights li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .hero-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero-cta {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .hero-visual {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.2);
+  }
+  .hero-visual img {
+    width: 100%;
+    display: block;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card h2 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .card p { color: var(--muted); line-height: 1.6; font-size: 0.95rem; }
+
+  .card-coming-soon {
+    position: relative;
+    border-color: rgba(245, 158, 11, 0.3);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(245, 158, 11, 0.03) 100%);
+  }
+  .coming-soon-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .card-highlight {
+    border-color: rgba(8, 145, 178, 0.3);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(8, 145, 178, 0.05) 100%);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .step-card:hover { border-color: var(--accent); }
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .step-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .step-card p { color: var(--muted); line-height: 1.6; font-size: 0.9rem; }
+  .step-card code {
+    background: rgba(8, 145, 178, 0.1);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--accent-hover);
+  }
+
+  .file-tree {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  .tree-line { display: flex; align-items: center; gap: 0.5rem; }
+  .tree-indent { padding-left: 1.5rem; }
+  .tree-indent-2 { padding-left: 3rem; }
+  .tree-folder { font-size: 1rem; }
+  .tree-icon { font-size: 1rem; }
+  .tree-file {
+    font-size: 0.65rem;
+    background: rgba(8, 145, 178, 0.15);
+    color: var(--accent-hover);
+    padding: 0.05rem 0.3rem;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  .cta-section { text-align: center; }
+  .cta-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--text); }
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: #fff;
+  }
+  .gh-icon { width: 1em; height: 1em; }
+
+  @media (max-width: 768px) {
+    .hero, .hero-img-left {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .hero-img-left .hero-visual {
+      order: -1;
+    }
+    .hero-content {
+      text-align: center;
+    }
+    .hero-highlights {
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 { font-size: 2rem; }
+    .features-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+</style>
