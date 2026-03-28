@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Users & Groups - Drizby"
-  description="Unlimited users with no per-seat pricing. Role-based access control, group-based visibility, and team management built in."
+  title="Users, Groups & Authentication - Drizby"
+  description="9 authentication methods including SAML SSO and SCIM provisioning. Unlimited users with no per-seat pricing, role-based access, and group-based visibility."
   ogImage="https://www.drizby.com/images/drizby_groups.png"
   canonicalPath="/features/users-and-groups"
 >
@@ -26,7 +26,7 @@ import Layout from '../../layouts/Layout.astro';
         <p class="hero-desc">Built for an agentic world — no per-seat pricing. Invite your whole team without worrying about costs.</p>
         <ul class="hero-highlights">
           <li>Unlimited users with role-based access controls</li>
-          <li>7 authentication methods: Google, GitHub, GitLab, Microsoft, Slack, password, and magic link</li>
+          <li>9 authentication methods including SAML 2.0 SSO and SCIM 2.0 provisioning</li>
           <li>Group-based dashboard and data visibility</li>
         </ul>
         <div class="hero-cta">
@@ -78,6 +78,40 @@ import Layout from '../../layouts/Layout.astro';
           <h3>Slack</h3>
           <p>Slack OpenID Connect for teams already on Slack.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Enterprise SSO & Provisioning</h2>
+      <p class="section-desc">Connect your identity provider for single sign-on and automatic user lifecycle management. Configure everything from the admin UI — no code changes or restarts needed.</p>
+      <div class="features-grid" style="margin-bottom: 1.5rem;">
+        <div class="card">
+          <div class="card-icon-header">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <h3>SAML 2.0 Single Sign-On</h3>
+          </div>
+          <p>Users authenticate through your organisation's IdP instead of managing separate credentials. Supports Okta, Azure AD / Entra ID, OneLogin, and any SAML 2.0 compliant provider. Group attributes are automatically synced on each login.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon-header">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <h3>SCIM 2.0 Provisioning</h3>
+          </div>
+          <p>Your IdP automatically creates, updates, and deactivates users and groups in Drizby. No manual invites needed. Deprovisioned users are blocked instantly. Bearer token authentication with SHA-256 hashed storage.</p>
+        </div>
+      </div>
+      <div class="screenshot-container">
+        <figure>
+          <img src="/images/drizby_auth.png" alt="Authentication settings with SAML and SCIM configuration" loading="lazy" />
+          <figcaption>Authentication settings — configure all sign-in methods from a single page</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -387,6 +421,18 @@ import Layout from '../../layouts/Layout.astro';
     font-size: 1rem;
     margin-bottom: 1.5rem;
     line-height: 1.5;
+  }
+
+  .card-icon-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .card-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
   }
 
   .auth-providers {
