@@ -68,6 +68,7 @@ const currentPath = Astro.url.pathname;
                 <a href="/features/mcp-server" class:list={[{ active: currentPath.includes('mcp-server') }]}>MCP Server</a>
                 <a href="/features/github-integration" class:list={[{ active: currentPath.includes('github-integration') }]}>GitHub</a>
                 <a href="/features/users-and-groups" class:list={[{ active: currentPath.includes('users-and-groups') }]}>Users & Groups</a>
+                <a href="/features/metabase-import" class:list={[{ active: currentPath.includes('metabase-import') }]}>Metabase Import</a>
               </div>
             </div>
           </div>
@@ -79,6 +80,7 @@ const currentPath = Astro.url.pathname;
             <a href="/features/mcp-server" class:list={["nav-link", { active: currentPath.includes('mcp-server') }]}>MCP Server</a>
             <a href="/features/github-integration" class:list={["nav-link", { active: currentPath.includes('github-integration') }]}>GitHub</a>
             <a href="/features/users-and-groups" class:list={["nav-link", { active: currentPath.includes('users-and-groups') }]}>Users & Groups</a>
+            <a href="/features/metabase-import" class:list={["nav-link", { active: currentPath.includes('metabase-import') }]}>Metabase Import</a>
           </div>
           <a href="/pricing" class:list={["nav-link", { active: currentPath.includes('pricing') }]}>Pricing</a>
           <a href="/docs/getting-started/" class:list={["nav-link", { active: currentPath.startsWith('/docs') }]}>Docs</a>

@@ -1,0 +1,485 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Metabase Import - Drizby"
+  description="Migrate from Metabase to Drizby in minutes. Import your connections, schemas, cubes, and dashboards automatically with AI-powered translation."
+  ogImage="https://www.drizby.com/images/drizby_metabase_after.png"
+  canonicalPath="/features/metabase-import"
+>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.drizby.com" },
+      { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://www.drizby.com/#features" },
+      { "@type": "ListItem", "position": 3, "name": "Metabase Import", "item": "https://www.drizby.com/features/metabase-import" }
+    ]
+  })} />
+  <main class="feature-page">
+    <a href="/" class="breadcrumb">&larr; Back to Home</a>
+
+    <section class="hero hero-img-right">
+      <div class="hero-content">
+        <span class="hero-badge">New</span>
+        <h1>Migrate from Metabase</h1>
+        <p class="hero-desc">Import your Metabase connections, dashboards, and questions into Drizby with a single click. AI handles the translation automatically.</p>
+        <ul class="hero-highlights">
+          <li>Connect via API key &mdash; no Metabase downtime required</li>
+          <li>Auto-generates Drizzle schemas and semantic cubes from your databases</li>
+          <li>AI translates Metabase queries into cube queries</li>
+          <li>Dashboard layouts, chart types, and text cards preserved</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Try Drizby Cloud &mdash; 7 Days Free</a>
+          <a class="btn" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener">Self-Host Free</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="/images/drizby_metabase_migration.png" alt="Drizby Metabase import wizard in progress" loading="eager" />
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Before & After</h2>
+      <p class="section-intro">Your Metabase dashboards arrive in Drizby with their layout, charts, and data intact. No manual rebuilding.</p>
+      <div class="comparison-grid">
+        <div class="screenshot-container">
+          <figure>
+            <img src="/images/drizby_metabase_before.png" alt="Dashboard in Metabase before migration" loading="lazy" />
+            <figcaption>Original dashboard in Metabase</figcaption>
+          </figure>
+        </div>
+        <div class="comparison-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-4-4 4 4-4 4"/></svg>
+        </div>
+        <div class="screenshot-container">
+          <figure>
+            <img src="/images/drizby_metabase_after.png" alt="Same dashboard after import into Drizby" loading="lazy" />
+            <figcaption>Same dashboard in Drizby after import</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-intro">The import wizard guides you through a 6-step process. The entire migration runs as a streaming pipeline &mdash; you see progress in real-time.</p>
+      <div class="steps-grid">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <h3>Connect</h3>
+          <p>Enter your Metabase URL and API key. Drizby connects to the Metabase API to fetch your databases and dashboards. No downtime, no data export files.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <h3>Select Databases</h3>
+          <p>Choose which Metabase databases to import. Drizby maps Metabase engine types (PostgreSQL, MySQL, Snowflake) to its own connection providers automatically.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <h3>Enter Credentials</h3>
+          <p>Metabase redacts passwords in its API, so you enter the connection string for each database. A test button validates connectivity before you proceed.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">4</div>
+          <h3>Select Dashboards</h3>
+          <p>Pick which Metabase dashboards to bring over. You can import all of them or just the ones you need.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">5</div>
+          <h3>AI-Powered Import</h3>
+          <p>This is where the magic happens. For each database, Drizby automatically introspects the schema, generates Drizzle ORM definitions, creates semantic cubes with AI, plans joins, compiles everything, and then translates your Metabase queries into cube queries.</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">6</div>
+          <h3>Done</h3>
+          <p>Your dashboards are live in Drizby with working charts, KPI cards, and data tables. Click through to any imported dashboard and start exploring.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">What Gets Imported</h2>
+      <div class="features-grid">
+        <div class="card">
+          <h3>Database Connections</h3>
+          <p>PostgreSQL, MySQL, SQLite, Snowflake, and Redshift connections are mapped to Drizby's provider system. Unsupported engines (BigQuery, MongoDB, SQL Server) are flagged clearly so you know what can and can't be imported.</p>
+        </div>
+        <div class="card">
+          <h3>Schemas & Cubes</h3>
+          <p>Each imported database is automatically introspected using drizzle-kit. AI generates semantic cube definitions with dimensions, measures, and joins &mdash; no manual schema work required.</p>
+        </div>
+        <div class="card">
+          <h3>Dashboard Layouts</h3>
+          <p>Metabase's 18-column grid is translated to Drizby's 12-column grid. Card positions, sizes, and ordering are preserved. Text and heading cards come through as markdown portlets.</p>
+        </div>
+        <div class="card">
+          <h3>Chart Types</h3>
+          <p>Bar, line, area, pie, scatter, funnel, and table charts map directly. Scalar cards become KPI numbers. Row charts become bar charts. Visualization settings like stacking and axis labels are carried over.</p>
+        </div>
+        <div class="card">
+          <h3>Queries</h3>
+          <p>AI translates Metabase native SQL and structured queries into cube queries using your newly generated semantic layer. The original Metabase query metadata is stored for reference.</p>
+        </div>
+        <div class="card">
+          <h3>Everything Else</h3>
+          <p>After import, you get full access to Drizby's features: AI notebooks, analysis builder, MCP server, GitHub sync, and unlimited users &mdash; all querying through the semantic layer, not raw SQL.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Supported Engine Mapping</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Metabase Engine</th>
+              <th>Drizby Provider</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>PostgreSQL</td><td>postgres-js</td><td class="status-yes">Supported</td></tr>
+            <tr><td>MySQL</td><td>mysql2</td><td class="status-yes">Supported</td></tr>
+            <tr><td>SQLite</td><td>better-sqlite3</td><td class="status-yes">Supported</td></tr>
+            <tr><td>Snowflake</td><td>snowflake</td><td class="status-yes">Supported</td></tr>
+            <tr><td>Redshift</td><td>postgres-js (PG-wire)</td><td class="status-partial">Partial</td></tr>
+            <tr><td>DuckDB</td><td>duckdb</td><td class="status-yes">Supported</td></tr>
+            <tr><td>SQL Server</td><td>&mdash;</td><td class="status-no">Not yet</td></tr>
+            <tr><td>BigQuery</td><td>&mdash;</td><td class="status-no">Not yet</td></tr>
+            <tr><td>MongoDB</td><td>&mdash;</td><td class="status-no">Not supported</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title">Why Switch?</h2>
+      <div class="features-grid">
+        <div class="card card-highlight">
+          <h3>Unlimited Users</h3>
+          <p>No per-seat pricing. Add your entire team &mdash; analysts, engineers, product managers &mdash; without worrying about the bill. In an agentic world, per-seat pricing doesn't make sense.</p>
+        </div>
+        <div class="card card-highlight">
+          <h3>Semantic Layer</h3>
+          <p>Define metrics once, use everywhere. Drizby's semantic layer means every dashboard, notebook, and AI agent queries consistent, governed metrics &mdash; not ad-hoc SQL.</p>
+        </div>
+        <div class="card card-highlight">
+          <h3>AI-Native</h3>
+          <p>Agentic notebooks, MCP server for Claude/Copilot/Cursor, and AI-powered cube generation. Drizby is built for the AI-first analytics workflow.</p>
+        </div>
+        <div class="card card-highlight">
+          <h3>Self-Host or Cloud</h3>
+          <p>Run Drizby on your own infrastructure with a single Docker command, or use Drizby Cloud. Your data, your choice. Full source code on GitHub.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section cta-section">
+      <h2 class="section-title">Ready to migrate?</h2>
+      <p class="section-intro">Get started in under 5 minutes. No credit card required for the free tier.</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="https://github.com/cliftonc/drizby" target="_blank" rel="noopener">
+          <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          Get Started
+        </a>
+        <a class="btn" href="https://cloud.drizby.com/register" target="_blank" rel="noopener">Try Drizby Cloud &mdash; 7 Days Free</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .feature-page {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .breadcrumb {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    transition: color 0.15s;
+  }
+  .breadcrumb:hover { color: var(--accent-hover); }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(8, 145, 178, 0.12);
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 3rem 0;
+  }
+  .hero-content {
+    text-align: left;
+  }
+  .hero h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  .hero-desc {
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.65;
+  }
+  .hero-highlights {
+    margin-top: 1.25rem;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .hero-highlights li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .hero-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero-cta {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .hero-visual {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.2);
+  }
+  .hero-visual img {
+    width: 100%;
+    display: block;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .section-intro {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Before/After comparison */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .comparison-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+  .comparison-arrow svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* Steps */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .flow-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .flow-step:hover { border-color: var(--accent); }
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+  .flow-step h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+  .flow-step p {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .card p { color: var(--muted); line-height: 1.6; font-size: 0.95rem; }
+  .card-highlight {
+    border-color: rgba(8, 145, 178, 0.3);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(8, 145, 178, 0.05) 100%);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .screenshot-container figure {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .screenshot-container figure:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(8, 145, 178, 0.1);
+  }
+  .screenshot-container img { width: 100%; display: block; }
+  .screenshot-container figcaption {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  /* Table */
+  .table-container {
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 0.6rem 1rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .status-yes { color: #22c55e; font-weight: 500; }
+  .status-partial { color: #eab308; font-weight: 500; }
+  .status-no { color: var(--muted); }
+
+  .cta-section { text-align: center; }
+  .cta-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--text); }
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: #fff;
+  }
+  .gh-icon { width: 1em; height: 1em; }
+
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .hero-content { text-align: center; }
+    .hero-highlights {
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 { font-size: 2rem; }
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+    .comparison-arrow {
+      transform: rotate(90deg);
+    }
+    .steps-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+  }
+</style>

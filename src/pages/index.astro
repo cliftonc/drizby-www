@@ -15,6 +15,7 @@ const features = [
   { title: 'GitHub Integration', desc: 'Version-control your schemas, cubes, and dashboards. Push to GitHub, tag releases, and restore from any version.', href: '/features/github-integration', img: '/images/drizby_github.png', alt: 'GitHub sync with push progress' },
   { title: 'Unlimited Users', desc: 'No per-seat pricing. Role-based access, group visibility, and team management. In an agentic world, per-seat pricing doesn\'t make sense.', href: '/features/users-and-groups', img: '/images/drizby_groups.png', alt: 'Users and groups management' },
   { title: 'Enterprise Authentication', desc: '9 sign-in methods: Google, GitHub, GitLab, Microsoft, Slack, password, magic link, SAML 2.0 SSO, and SCIM 2.0 provisioning. Connect your IdP for single sign-on and automatic user lifecycle management.', href: '/features/users-and-groups', img: '/images/drizby_auth.png', alt: 'Authentication settings with SAML and SCIM' },
+  { title: 'Metabase Import', desc: 'Migrate from Metabase in minutes. A wizard imports your connections, auto-generates schemas and cubes with AI, and translates your dashboards — layout, charts, and queries included.', href: '/features/metabase-import', img: '/images/drizby_metabase_before.png', alt: 'Metabase dashboard imported into Drizby', altImg: '/images/drizby_metabase_after.png', altAlt: 'Same dashboard after import into Drizby' },
 ];
 
 const databases = [
@@ -205,7 +206,7 @@ const ogImage = `${url}/images/drizby_3.png`;
     <section class="features">
       <h2 class="section-title">Everything you need to understand your data</h2>
       <div class="features-list">
-        {features.map(({ title, desc, href, img, alt }, i) => (
+        {features.map(({ title, desc, href, img, alt, altImg, altAlt }: any, i: number) => (
           <div class:list={["feature-row", `feature-row-${i % 2 === 0 ? 'normal' : 'flipped'}`]}>
             <div class="feature-text">
               <h3>{title}</h3>
@@ -213,7 +214,16 @@ const ogImage = `${url}/images/drizby_3.png`;
               <a href={href} class="feature-link">Learn more &rarr;</a>
             </div>
             <div class="feature-img">
-              <img src={img} alt={alt} loading="lazy" />
+              {altImg ? (
+                <div class="crossfade-container">
+                  <img src={img} alt={alt} loading="lazy" class="crossfade-img crossfade-a" />
+                  <img src={altImg} alt={altAlt || alt} loading="lazy" class="crossfade-img crossfade-b" />
+                  <div class="crossfade-label crossfade-label-a">Metabase</div>
+                  <div class="crossfade-label crossfade-label-b">Drizby</div>
+                </div>
+              ) : (
+                <img src={img} alt={alt} loading="lazy" />
+              )}
             </div>
           </div>
         ))}
@@ -697,6 +707,58 @@ const ogImage = `${url}/images/drizby_3.png`;
   .feature-img img {
     width: 100%;
     display: block;
+  }
+
+  /* Crossfade animation for before/after images */
+  .crossfade-container {
+    position: relative;
+    width: 100%;
+  }
+  .crossfade-img {
+    width: 100%;
+    display: block;
+  }
+  .crossfade-a {
+    animation: crossfadeA 6s ease-in-out infinite;
+  }
+  .crossfade-b {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: crossfadeB 6s ease-in-out infinite;
+  }
+  .crossfade-label {
+    position: absolute;
+    top: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .crossfade-label-a {
+    right: 0.75rem;
+    background: rgba(59, 130, 246, 0.85);
+    color: #fff;
+    animation: crossfadeA 6s ease-in-out infinite;
+  }
+  .crossfade-label-b {
+    right: 0.75rem;
+    background: rgba(8, 145, 178, 0.85);
+    color: #fff;
+    animation: crossfadeB 6s ease-in-out infinite;
+  }
+  @keyframes crossfadeA {
+    0%, 42% { opacity: 1; }
+    50%, 92% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes crossfadeB {
+    0%, 42% { opacity: 0; }
+    50%, 92% { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   /* ============================================
